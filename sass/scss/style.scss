@@ -1,0 +1,224 @@
+@import "./media";
+@import "./variables";
+@import "./mixins.scss";
+
+:root{
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  a {
+    text-decoration: none;
+    &:hover {
+      color: red;
+    }
+  }
+
+  h1{
+    font-size: 3rem;
+  }
+  h2{
+    font-size: 2rem;
+  }
+  div{
+    font-size: 1.6rem;
+  }
+}
+
+//-------------------------début Mise en place de la grille index.html------------------
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-produits{
+  img{
+    width: 25rem;
+  }
+}
+
+.mise-en-page-produit {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    "header header"
+    "produit_photo produit"
+    "footer footer";
+
+  .mise-en-page-produit {
+    border: solid 1px black;
+    background-color: bisque;
+  }
+}
+
+header {
+  grid-area: header;
+  text-align: center;
+  .menu {
+    background-color: aquamarine;
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      li {
+        margin-right: 3rem;
+        margin-left: 3rem;
+      }
+    }
+  }
+}
+
+.produit {
+  grid-area: produit;
+}
+
+
+
+footer {
+  grid-area: footer;
+  text-align: center;
+}
+
+//------------------------------fin de la mise en place de la grille index.html
+
+//******************************PRODUIT HTML-----------------------------------
+.container-page-produit{
+  img{
+    width: 25rem;
+  }
+}
+
+
+//------------------------------PRODUIT HTML FIN-------------------------------
+
+//******************************PANIER HTML-------------------------------------
+.grid-panier{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    "header"
+    "container-produits-panier"
+    "footer";
+  }
+
+
+#container-produits-panier{
+  grid-area: "container-produits-panier" ;
+  display: flex;
+  flex-direction: column;
+  min-width: 80vw;
+
+  justify-content: center;
+  border: 2px solid black; 
+  
+  div{
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.container-recapitulatif{
+background-color: antiquewhite;
+display: flex;
+justify-content: space-around;
+align-items: center;
+
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 3rem;
+
+}
+
+.container-montant-total{
+background-color: rgb(212, 129, 20);
+display: flex;
+justify-content: space-around;
+align-items: center;
+
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 3rem;
+
+}
+
+//-----------------------------PANIER HTML FIN---------------------------------
+
+//*******************************FORMULAIRE ENVOIE COMMANDE*********************
+
+#formulaireCommande{
+  border: 2px black solid;
+  background-color: beige;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h2{
+  background-color: chartreuse;
+  // align-items: center;
+  // align-content: center;
+  text-align: center;
+}
+
+form{
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input{
+    background-color: coral;
+    width: 80vw;
+  }
+
+  .infoChampManquant{
+    color: rgb(255, 238, 0);
+    font-weight: 900;
+  }
+
+  textarea{
+    background-color: crimson;
+    width: 80vw;
+  }
+}
+
+//************************confirmation-commande---------------
+.gras{
+  font-weight: 900;
+}
+
+#container-recapitulatif-commande{
+  width: 80vw;
+  border: 1px solid black;
+  padding-bottom: 1rem;
+}
+
+.recapCommande{
+  p:nth-child(1){
+    color: red;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+
+  p{
+    text-align: center;
+  }
+}
+

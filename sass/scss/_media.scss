@@ -1,0 +1,19 @@
+@mixin smartphone-grid {
+  @media only screen and (max-width: $smartphone) {
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 200px 200px 200px 200px 200px 100px;
+    grid-template-areas:
+      "header"
+      "produit1"
+      "produit_photo1"
+      "produit2"
+      "produit_photo2"
+      "produit3"
+      "produit_photo3"
+      "produit4"
+      "produit_photo4"
+      "produit5"
+      "produit_photo5"
+      "footer";
+  }
+}

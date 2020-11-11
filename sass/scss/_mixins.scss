@@ -1,0 +1,9 @@
+@mixin style-description-produit {
+  font-weight: bold;
+  font-size: 1.3rem;
+  & span {
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: rgb(63, 61, 61);
+  }
+}

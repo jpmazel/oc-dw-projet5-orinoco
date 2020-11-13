@@ -28,14 +28,14 @@ Pour que le site fonctionne il faut installer le backend.
 Dans Visual Studio Code :
 * ouvrir le repertoire du backend
 * ouvrir le terminal
-* npm install
-* node server
+* `npm install`
+* `node server`
 
 ### 2.2 __Front-End__  
 Pour que le sass fonctionne il faut l'installer
 Dans Visual Studio Code :
 * ouvrir le terminal
-* npm install
+* `npm install`
 
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------

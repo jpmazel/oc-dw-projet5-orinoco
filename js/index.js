@@ -44,13 +44,13 @@ dataApi.then(async (responseData) => {
             </div>
             <div class="produit">
               <ul>
-                <li>Nom produit : <span>${name[i]}</span></li>
-                <li>Description : <span>${
+                <li><span class="gras">Nom produit : </span> <span>${name[i]}</span></li>
+                <li><span class="gras">Description :</span> <span>${
                   description[i]
                 }</span></li>              
-                <li>price : <span>${price[i] / 100} €</span></li>
+                <li><span class="gras">price : </span><span>${price[i] / 100} €</span></li>
               </ul>
-              <button>Commander l'article</button>
+              <button class="btn">Commander l'article</button>
             </div>
           </div>
         </a>

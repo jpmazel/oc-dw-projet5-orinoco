@@ -17,6 +17,10 @@
     text-decoration: none;
     transition: color 0.3s;
 
+    &:link{
+      color: black;
+    }
+
     &:active {
       color: black;
     }
@@ -42,7 +46,7 @@
   }
 }
 
-.btn {
+.btn , #btn-envoyer{
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -220,11 +224,43 @@ footer {
 //------------------------------fin de la mise en place de la grille index.html
 
 //******************************PRODUIT HTML-----------------------------------
-.container-page-produit {
-  img {
-    width: 25rem;
+
+
+.option_produit_mise_en_page { 
+  // border: 1px black solid;
+  height: 150px;
+  
+  
+  
+  
+
+  .page-produit-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: $couleurOrinoco;
+    padding-top: 1rem;
+
+    .label-option_produit{
+      // background: red;
+      label{
+        margin-right: 3.3rem;
+      }
+    }
+
+    .label-quantite_produit{
+      // background: orange;
+      
+    }
+
+    select{        
+      font-size: 2rem;
+      padding-left: 1rem;
+     }   
   }
 }
+
+
 
 //------------------------------PRODUIT HTML FIN-------------------------------
 
@@ -279,6 +315,8 @@ footer {
   flex-basis: 3rem;
 }
 
+
+
 //-----------------------------PANIER HTML FIN---------------------------------
 
 //*******************************FORMULAIRE ENVOIE COMMANDE*********************
@@ -300,27 +338,27 @@ h2 {
   text-align: center;
 }
 
-form {
-  background-color: cadetblue;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+// form {
+//   // background-color: cadetblue;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
 
-  input {
-    background-color: coral;
-    width: 80vw;
-  }
+//   input {
+//     background-color: coral;
+//     width: 80vw;
+//   }
 
-  .infoChampManquant {
-    color: rgb(255, 238, 0);
-    font-weight: 900;
-  }
+//   .infoChampManquant {
+//     color: rgb(255, 238, 0);
+//     font-weight: 900;
+//   }
 
-  textarea {
-    background-color: crimson;
-    width: 80vw;
-  }
-}
+//   textarea {
+//     background-color: crimson;
+//     width: 80vw;
+//   }
+// }
 
 //************************confirmation-commande---------------
 .gras {

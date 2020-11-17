@@ -28,26 +28,32 @@ dataApi.then(async (responseData) => {
               <img src="${response.imageUrl}">
             </div>
             <div class="produit">
+
               <ul>
-                <li>Nom produit : <span>${response.name}</span></li>
-                <li>Description : <span>${
+                <li><span class="gras">Nom produit : </span> <span>${response.name}</span></li>
+                <li><span class="gras">Description :</span> <span>${
                   response.description
                 }</span></li>                
-                <li>price : <span>${response.price / 100} €</span></li>
+                <li><span class="gras">price : </span> <span>${response.price / 100} €</span></li>
               </ul>
+
               <div class="option_produit_mise_en_page">
-              <form>
-                <label for="option_produit">Choisir l'option</label>
-                  <select name="option_produit" id="option_produit">                    
-                  </select>
+                <form class="page-produit-form">
+                  <div class="label-option_produit">
+                    <label for="option_produit"><span class="gras">Choisir l'option:</span></label>
+                    <select name="option_produit" id="option_produit"></select>
+                  </div>
 
-                  <label for="quantite_produit">Choisir la quantité</label>
-                  <select name="quantite_produit" id="quantite_produit">                    
-                  </select>
-              </div>
+                  <div class="label-quantite_produit">
+                    <label for="quantite_produit"><span class="gras">Choisir la quantité:</span></label>
+                    <select name="quantite_produit" id="quantite_produit"></select>
+                  </div>
 
-              <button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter l'article au panier</button>
-              </form>
+                </form>
+              
+                
+                <button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter l'article au panier</button>
+                </div>
             </div>
           </div>
           `;

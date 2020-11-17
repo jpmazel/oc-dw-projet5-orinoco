@@ -1,19 +1,61 @@
-@mixin smartphone-grid {
+@mixin smartphone-container {
   @media only screen and (max-width: $smartphone) {
-    grid-template-columns: 100%;
-    grid-template-rows: 100px 200px 200px 200px 200px 200px 100px;
-    grid-template-areas:
-      "header"
-      "produit1"
-      "produit_photo1"
-      "produit2"
-      "produit_photo2"
-      "produit3"
-      "produit_photo3"
-      "produit4"
-      "produit_photo4"
-      "produit5"
-      "produit_photo5"
-      "footer";
+    width: 95vw;
+  }
+}
+
+@mixin smartphone- {
+  @media only screen and (max-width: $smartphone) {
+  }
+}
+
+@mixin smartphone-header {
+  @media only screen and (max-width: $smartphone) {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+}
+
+@mixin smartphone-h1 {
+  @media only screen and (max-width: $smartphone) {
+    font-size: 3rem;
+  }
+}
+
+@mixin smartphone-mise-en-page-produit {
+  @media only screen and (max-width: $smartphone) {
+    flex-direction: column;
+
+    // border: solid 5.5px black;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@mixin smartphone-produit_photo {
+  @media only screen and (max-width: $smartphone) {
+    align-self: center;
+  }
+}
+
+@mixin smartphone-produit {
+  @media only screen and (max-width: $smartphone) {
+  }
+}
+
+@mixin smartphone-btn {
+  @media only screen and (max-width: $smartphone) {
+    justify-content: center;
+    // margin-left: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+  }
+}
+//--------------------------------------------------------
+@mixin tailleIntermediaire-container {
+  @media only screen and (max-width: $tailleIntermediaire) {
+    width: 95vw;
   }
 }

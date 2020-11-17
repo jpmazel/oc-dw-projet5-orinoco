@@ -13,12 +13,17 @@
   box-sizing: border-box;
   
   a {
+    text-decoration-color: black;
     text-decoration: none;
+    transition: color 0.3s;
     
     &:active{
       color: black;
     }
     &:visited{
+      color: black;
+    }
+    &:focus{
       color: black;
     }
     &:hover {
@@ -38,19 +43,29 @@
 }
 
 .btn{
-  display: flex;
+
+  display: flex;   
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;  
   height: 3rem;
   padding: 1rem;
   margin-top: 2rem;
-  // background-color:;
+  margin-bottom: 1rem;
   border-radius: 1rem;
+
+  background-image: radial-gradient(circle, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
+  background-size: 300%;
+  background-position: left;
+  transition: background-image 1s;
+
+  @include smartphone-btn;
+
   &:hover{
     cursor: pointer;
     // background: linear-gradient(90deg, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
-    background: radial-gradient(circle, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
+    background-position: right 200px;
+    
     color: black; 
     
     transform: scale(1.01);
@@ -70,22 +85,26 @@ html, body{
 .container {
   width: 80vw;
   margin: auto;
-  display: flex;  
+  display: flex;
+  @include tailleIntermediaire-container;  
+  @include smartphone-container;
   // border: 1px red solid;  
 }
 
 .mise-en-page-produit {
   display: flex;
-  
   border: solid 0.5px black;  
   margin-bottom: 1rem; //espacement entre produit
   border-radius: 2rem;
   background-color:  $couleurOrinoco;
   // height: 20rem;
+  @include smartphone-mise-en-page-produit;
 
-  .produit_photo{  
+  .produit_photo{ 
+    order: 0; 
        
-    align-self: stretch;    
+    align-self: stretch;
+    @include smartphone-produit_photo;   
     
     img{
       vertical-align: bottom;
@@ -100,8 +119,10 @@ html, body{
   }
 
   .produit{
+    order: 1;
     margin-left: 2rem;
     margin-top: 1rem;
+    @include smartphone-produit;
   }
 }
 
@@ -121,6 +142,7 @@ header {
 
   h1{
     text-align: center;
+    @include smartphone-h1;
   }
   
   .menu {
@@ -135,12 +157,13 @@ header {
       justify-content: space-between;
       align-items: center;
       align-content: center;
+      @include smartphone-header;
     }
 
     img{
       order: 0;      
       max-width: 20rem;  
-     border-radius: 1rem;
+      border-radius: 1rem;
     }
     ul {
       order: 1;

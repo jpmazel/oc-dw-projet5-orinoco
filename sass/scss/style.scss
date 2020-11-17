@@ -2,7 +2,7 @@
 @import "./variables";
 @import "./mixins.scss";
 
-:root{
+:root {
   font-size: 62.5%;
 }
 
@@ -11,19 +11,19 @@
   padding: 0;
   list-style: none;
   box-sizing: border-box;
-  
+
   a {
     text-decoration-color: black;
     text-decoration: none;
     transition: color 0.3s;
-    
-    &:active{
+
+    &:active {
       color: black;
     }
-    &:visited{
+    &:visited {
       color: black;
     }
-    &:focus{
+    &:focus {
       color: black;
     }
     &:hover {
@@ -31,54 +31,57 @@
     }
   }
 
-  h1{
+  h1 {
     font-size: 5rem;
   }
-  h2{
+  h2 {
     font-size: 3rem;
   }
-  div{
-    font-size: 2.0rem;
+  div {
+    font-size: 2rem;
   }
 }
 
-.btn{
-
-  display: flex;   
+.btn {
+  display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem;  
+  font-size: 2rem;
   height: 3rem;
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
 
-  background-image: radial-gradient(circle, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 230, 239, 1) 20%,
+    rgba(207, 196, 224, 1) 77%
+  );
   background-size: 300%;
   background-position: left;
   transition: background-image 1s;
 
   @include smartphone-btn;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     // background: linear-gradient(90deg, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
     background-position: right 200px;
-    
-    color: black; 
-    
+
+    color: black;
+
     transform: scale(1.01);
     opacity: 0.9;
-   
+
     transition-property: transform, opacity;
     transition-duration: 1s, 1s;
   }
 }
 
-html, body{
+html,
+body {
   font-family: "Open Sans", sans-serif;
-  
 }
 
 //-------------------------début Mise en place de la grille index.html------------------
@@ -86,39 +89,39 @@ html, body{
   width: 80vw;
   margin: auto;
   display: flex;
-  @include tailleIntermediaire-container;  
+  @include tailleIntermediaire-container;
   @include smartphone-container;
-  // border: 1px red solid;  
+  // border: 1px red solid;
 }
 
 .mise-en-page-produit {
   display: flex;
-  border: solid 0.5px black;  
+  border: solid 0.5px black;
   margin-bottom: 1rem; //espacement entre produit
   border-radius: 2rem;
-  background-color:  $couleurOrinoco;
+  background-color: $couleurOrinoco;
   // height: 20rem;
   @include smartphone-mise-en-page-produit;
 
-  .produit_photo{ 
-    order: 0; 
-       
+  .produit_photo {
+    order: 0;
+
     align-self: stretch;
-    @include smartphone-produit_photo;   
-    
-    img{
+    @include smartphone-produit_photo;
+
+    img {
       vertical-align: bottom;
       width: 30rem;
       height: 20rem;
       object-fit: cover;
       // object-position: bottom right;
-      
-      border-radius: 2rem;  
-      box-shadow: 0px 1px 12px 2px rgba(0,0,0,0.63);  
-    }     
+
+      border-radius: 2rem;
+      box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.63);
+    }
   }
 
-  .produit{
+  .produit {
     order: 1;
     margin-left: 2rem;
     margin-top: 1rem;
@@ -134,23 +137,23 @@ html, body{
   grid-template-areas:
     "header header"
     "produit_photo produit"
-    "footer footer";  
+    "footer footer";
 }
 
 header {
   grid-area: header;
 
-  h1{
+  h1 {
     text-align: center;
     @include smartphone-h1;
   }
-  
+
   .menu {
     background-color: $couleurOrinoco;
     border-radius: 1rem;
     border: 1px black solid;
 
-    .container-flexbox{
+    .container-flexbox {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -160,9 +163,9 @@ header {
       @include smartphone-header;
     }
 
-    img{
-      order: 0;      
-      max-width: 20rem;  
+    img {
+      order: 0;
+      max-width: 20rem;
       border-radius: 1rem;
     }
     ul {
@@ -182,29 +185,33 @@ header {
   grid-area: produit;
 }
 
-.produit_photo{
+.produit_photo {
   grid-area: produit_photo;
 }
 
-
-
 footer {
   display: flex;
+  flex-direction: column;
   border-radius: 2rem;
   border: 1px black solid;
-  height: 5rem;
+  height: auto;
   // margin: auto;
 
   justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
-  ul{
-    display: flex;
-    li{
-      padding: 1rem;
-    }   
 
+  ul {
+    display: flex;
+    li {
+      padding: 1rem;
+    }
   }
+
+  .copyright{
+    padding-bottom: 1rem;
+  }
+
   background-color: $couleurOrinoco;
   grid-area: footer;
   text-align: center;
@@ -213,17 +220,16 @@ footer {
 //------------------------------fin de la mise en place de la grille index.html
 
 //******************************PRODUIT HTML-----------------------------------
-.container-page-produit{
-  img{
+.container-page-produit {
+  img {
     width: 25rem;
   }
 }
 
-
 //------------------------------PRODUIT HTML FIN-------------------------------
 
 //******************************PANIER HTML-------------------------------------
-.grid-panier{
+.grid-panier {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
@@ -232,19 +238,18 @@ footer {
     "header"
     "container-produits-panier"
     "footer";
-  }
+}
 
-
-#container-produits-panier{
-  grid-area: "container-produits-panier" ;
+#container-produits-panier {
+  grid-area: "container-produits-panier";
   display: flex;
   flex-direction: column;
   min-width: 80vw;
 
   justify-content: center;
-  border: 2px solid black; 
-  
-  div{
+  border: 2px solid black;
+
+  div {
     background-color: antiquewhite;
     display: flex;
     justify-content: space-around;
@@ -252,35 +257,33 @@ footer {
   }
 }
 
-.container-recapitulatif{
-background-color: antiquewhite;
-display: flex;
-justify-content: space-around;
-align-items: center;
+.container-recapitulatif {
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-flex-grow: 1;
-flex-shrink: 1;
-flex-basis: 3rem;
-
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 3rem;
 }
 
-.container-montant-total{
-background-color: rgb(212, 129, 20);
-display: flex;
-justify-content: space-around;
-align-items: center;
+.container-montant-total {
+  background-color: rgb(212, 129, 20);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-flex-grow: 1;
-flex-shrink: 1;
-flex-basis: 3rem;
-
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 3rem;
 }
 
 //-----------------------------PANIER HTML FIN---------------------------------
 
 //*******************************FORMULAIRE ENVOIE COMMANDE*********************
 
-#formulaireCommande{
+#formulaireCommande {
   border: 2px black solid;
   background-color: beige;
 
@@ -290,55 +293,54 @@ flex-basis: 3rem;
   justify-content: center;
 }
 
-h2{
+h2 {
   background-color: chartreuse;
   // align-items: center;
   // align-content: center;
   text-align: center;
 }
 
-form{
+form {
   background-color: cadetblue;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  input{
+  input {
     background-color: coral;
     width: 80vw;
   }
 
-  .infoChampManquant{
+  .infoChampManquant {
     color: rgb(255, 238, 0);
     font-weight: 900;
   }
 
-  textarea{
+  textarea {
     background-color: crimson;
     width: 80vw;
   }
 }
 
 //************************confirmation-commande---------------
-.gras{
+.gras {
   font-weight: 900;
 }
 
-#container-recapitulatif-commande{
+#container-recapitulatif-commande {
   width: 80vw;
   border: 1px solid black;
   padding-bottom: 1rem;
 }
 
-.recapCommande{
-  p:nth-child(1){
+.recapCommande {
+  p:nth-child(1) {
     color: red;
     font-weight: 900;
     font-size: 2rem;
   }
 
-  p{
+  p {
     text-align: center;
   }
 }
-

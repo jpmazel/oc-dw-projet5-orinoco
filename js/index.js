@@ -37,7 +37,7 @@ dataApi.then(async (responseData) => {
 
         //Afficher tous les objets sur la page web
         structureProduits += `
-        <a href="./produit.html?id=${_id[i]}">
+        
           <div class="mise-en-page-produit">
             <div class="produit_photo">
               <img src="${imageUrl[i]}">
@@ -50,10 +50,12 @@ dataApi.then(async (responseData) => {
                 }</span></li>              
                 <li><span class="gras">price : </span><span>${price[i] / 100} €</span></li>
               </ul>
-              <button class="btn">Commander l'article</button>
+              <a href="./produit.html?id=${_id[i]}">
+              <button class="btn">Voir l'article</button>
+              </a>
             </div>
           </div>
-        </a>
+        
         `;
 
         //Injection html

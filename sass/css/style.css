@@ -39,9 +39,9 @@
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
   height: 3rem;
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
@@ -68,7 +68,8 @@
   transition-duration: 1s, 1s;
 }
 
-html, body {
+html,
+body {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -189,9 +190,10 @@ header .menu ul li {
 
 footer {
   display: flex;
+  flex-direction: column;
   border-radius: 2rem;
   border: 1px black solid;
-  height: 5rem;
+  height: auto;
   justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
@@ -204,6 +206,9 @@ footer ul {
 }
 footer ul li {
   padding: 1rem;
+}
+footer .copyright {
+  padding-bottom: 1rem;
 }
 
 .container-page-produit img {

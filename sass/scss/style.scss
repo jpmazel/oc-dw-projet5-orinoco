@@ -17,7 +17,7 @@
     text-decoration: none;
     transition: color 0.3s;
 
-    &:link{
+    &:link {
       color: black;
     }
 
@@ -46,7 +46,8 @@
   }
 }
 
-.btn , #btn-envoyer{
+.btn,
+#btn-envoyer {
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -212,7 +213,7 @@ footer {
     }
   }
 
-  .copyright{
+  .copyright {
     padding-bottom: 1rem;
   }
 
@@ -225,42 +226,34 @@ footer {
 
 //******************************PRODUIT HTML-----------------------------------
 
-
-.option_produit_mise_en_page { 
+.option_produit_mise_en_page {
   // border: 1px black solid;
   height: 150px;
-  
-  
-  
-  
 
-  .page-produit-form{
+  .page-produit-form {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     background: $couleurOrinoco;
     padding-top: 1rem;
 
-    .label-option_produit{
+    .label-option_produit {
       // background: red;
-      label{
+      label {
         margin-right: 3.3rem;
       }
     }
 
-    .label-quantite_produit{
+    .label-quantite_produit {
       // background: orange;
-      
     }
 
-    select{        
+    select {
       font-size: 2rem;
       padding-left: 1rem;
-     }   
+    }
   }
 }
-
-
 
 //------------------------------PRODUIT HTML FIN-------------------------------
 
@@ -283,25 +276,49 @@ footer {
   min-width: 80vw;
 
   justify-content: center;
-  border: 2px solid black;
+  // border: 1px solid black;
+  border-radius: 2rem;
 
-  div {
-    background-color: antiquewhite;
+  .container-recapitulatif {
+    background-color: $couleurOrinoco;
+    border: 1px black solid;
+    padding: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    border-radius: 2rem;
+    div{
+      &:nth-child(2){
+        padding-left: 1rem;
+        // color: red;
+        // font-size: 4rem;
+      }
+    }
+
+    
   }
+
+  
 }
 
-.container-recapitulatif {
-  background-color: antiquewhite;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.btn-supprimer {
+  padding: 0.8rem;
+  border-radius: 1rem;
+}
 
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 3rem;
+.btn-tous-supprimer-panier {
+  display: flex;
+  justify-content: center;
+  // border: 1px solid black;
+  height: 0 rem;
+  margin-bottom: 2rem;
+  padding: 0;
+  button {
+    margin: 0;
+    font-size: 2rem;
+  }
 }
 
 .container-montant-total {
@@ -315,15 +332,24 @@ footer {
   flex-basis: 3rem;
 }
 
+.affichage-prix-html {
+  border: 1px black solid;
+  border-radius: 1rem;
+  background-color: $couleurOrinoco;
+  text-align: center;
 
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
 
 //-----------------------------PANIER HTML FIN---------------------------------
 
 //*******************************FORMULAIRE ENVOIE COMMANDE*********************
 
 #formulaireCommande {
-  border: 2px black solid;
-  background-color: beige;
+  border: 1px black solid;
+  background-color: $couleurOrinoco;
+  border-radius: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -332,10 +358,73 @@ footer {
 }
 
 h2 {
-  background-color: chartreuse;
-  // align-items: center;
-  // align-content: center;
   text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#formulaireCommande {
+  form {
+    // border: 1px black solid;
+    // width:80%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+
+    label {
+      padding: 1rem;
+    }
+    input {
+      width: 80%;
+      padding: 1rem;
+      font-size: 2rem;
+    }
+
+    textarea {
+      width: 80%;
+      font-size: 2rem;
+    }
+
+    .infoChampManquant {
+      color: red;
+      font-weight: 900;
+      padding-bottom: 1rem;
+    }
+
+    #envoyerFormulaire {
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      
+      font-size: 2rem;
+      font-weight: bold;
+
+      background-image: radial-gradient(
+        circle,
+        rgba(240, 230, 239, 1) 20%,
+        rgba(207, 196, 224, 1) 77%
+      );
+      background-size: 300%;
+      background-position: left;
+      transition: background-image 1s;
+
+      &:hover {
+        cursor: pointer;
+        // background: linear-gradient(90deg, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
+        background-position: right 200px;
+
+        color: black;
+
+        transform: scale(1.01);
+        opacity: 0.9;
+
+        transition-property: transform, opacity;
+        transition-duration: 1s, 1s;
+      }
+    }
+  }
 }
 
 // form {

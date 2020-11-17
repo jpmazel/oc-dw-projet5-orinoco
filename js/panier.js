@@ -32,8 +32,8 @@ if (
       structureProduitPanier +
       `
     <div class="container-recapitulatif">
-      <div>Quantité : ${produitEnregistreDansLocalStorage[k].quantite} - ${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</div>
-      <div>${produitEnregistreDansLocalStorage[k].price} € - <button class="btn-supprimer"> supprimer </button> </div>
+      <div><span class="gras">Quantité :</span> ${produitEnregistreDansLocalStorage[k].quantite} - ${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</div>
+      <div><span class="gras">${produitEnregistreDansLocalStorage[k].price} €</span>  <button class="btn-supprimer"> supprimer </button> </div>
     </div>      
     `;
   }
@@ -75,10 +75,16 @@ for (let l = 0; l < btn_supprimer.length; l++) {
   });
 }
 
+
+
+
+
 //LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER
 //Le code HTML du boutton à afficher dans la page
 const btn_tous_supprimer_panier_html = `
-<button class="btn-tous-supprimer-panier"> Vider le panier </button>
+<div class="btn-tous-supprimer-panier">
+<button class="btn">Vider le panier</button>
+</div>
 `;
 
 //insertion du bouton dans le HTML du panier
@@ -108,6 +114,9 @@ btn_tous_supprimer_panier.addEventListener("click", (e) => {
 
 //FIN - Le bouton pour vider entièrement le panier
 
+
+
+
 //LE MONTANT TOTAL DU PANIER
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 let priceTotlaCalcul = [];
@@ -126,7 +135,7 @@ const priceTotal = priceTotlaCalcul.reduce(reducer, 0);
 
 //Le code HTML du price total à afficher
 const affichagepriceHtml = `
-<div class="affichage-price-html">Le price total est de : ${priceTotal} € </div>
+<div class="affichage-prix-html">Le prix total est de : <span class="gras"> ${priceTotal} € </span></div>
 `;
 
 //injection html dans la page panier après le dernier enfant
@@ -176,7 +185,7 @@ const afficherFormulaireHtml = () => {
   `;
 
   //Injection HTML
-  positionElement4.insertAdjacentHTML("afterend", structureFormulaire);
+  positionElement4.insertAdjacentHTML("beforeend", structureFormulaire);
 };
 
 //Affichage du formulaire

@@ -3,33 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/css/style.css" />
-    <title>Page PANIER</title>
+    <title>Page Panier</title>
   </head>
   <body>
     <div class="container">
       <div class="grid-panier">
         <header>
-          <h1>Site e-commerce</h1>
-          <div class="menu">
-            <ul>
-              <li><a href="./index.html"> Accueil</a></li>
-              <li><a href="./panier.html">Panier</a></li>
-            </ul>
-          </div>
+          <h1>Orinoco e-commerce</h1>
+
+          <nav class="menu">
+            <div class="container-flexbox">
+              <img src="./orinoco-logo.png" alt="logo orinico" />
+
+              <ul>
+                <li><a href="./index.html"> Accueil</a></li>
+                <li><a href="./panier.html">Panier</a></li>
+              </ul>
+            </div>
+          </nav>
         </header>
         <!-- Produits -->
         <div id="container-produits-panier">
-          <h2>Les produits sélectionnés :</h2>
+          
         </div>
 
-        
-
-        <footer>footer</footer>
-      </div>
+        <footer>
+          <!-- ul>li>a{Mentions légales}^li>a{Contact} -->
+          <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <div class="copyright">
+            <p>2020 ©</p>
+          </div>
+        </footer>
+      </div>      
     </div>
 
-    
     <script src="./js/panier.js"></script>
   </body>
 </html>

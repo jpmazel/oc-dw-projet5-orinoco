@@ -38,7 +38,9 @@ dataApi.then(async (responseData) => {
               </ul>
 
               <div class="option_produit_mise_en_page">
+
                 <form class="page-produit-form">
+                
                   <div class="label-option_produit">
                     <label for="option_produit"><span class="gras">Choisir l'option:</span></label>
                     <select name="option_produit" id="option_produit"></select>

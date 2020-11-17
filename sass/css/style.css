@@ -38,7 +38,8 @@
   font-size: 2rem;
 }
 
-.btn, #btn-envoyer {
+.btn,
+#btn-envoyer {
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -54,14 +55,16 @@
   transition: background-image 1s;
 }
 @media only screen and (max-width: 580px) {
-  .btn, #btn-envoyer {
+  .btn,
+#btn-envoyer {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
   }
 }
-.btn:hover, #btn-envoyer:hover {
+.btn:hover,
+#btn-envoyer:hover {
   cursor: pointer;
   background-position: right 200px;
   color: black;
@@ -246,23 +249,37 @@ footer .copyright {
   flex-direction: column;
   min-width: 80vw;
   justify-content: center;
-  border: 2px solid black;
+  border-radius: 2rem;
 }
-#container-produits-panier div {
-  background-color: antiquewhite;
+#container-produits-panier .container-recapitulatif {
+  background-color: #f0e6ef;
+  border: 1px black solid;
+  padding: 2rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-radius: 2rem;
+}
+#container-produits-panier .container-recapitulatif div:nth-child(2) {
+  padding-left: 1rem;
 }
 
-.container-recapitulatif {
-  background-color: antiquewhite;
+.btn-supprimer {
+  padding: 0.8rem;
+  border-radius: 1rem;
+}
+
+.btn-tous-supprimer-panier {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 3rem;
+  justify-content: center;
+  height: 0 rem;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+.btn-tous-supprimer-panier button {
+  margin: 0;
+  font-size: 2rem;
 }
 
 .container-montant-total {
@@ -275,9 +292,19 @@ footer .copyright {
   flex-basis: 3rem;
 }
 
+.affichage-prix-html {
+  border: 1px black solid;
+  border-radius: 1rem;
+  background-color: #f0e6ef;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
 #formulaireCommande {
-  border: 2px black solid;
-  background-color: beige;
+  border: 1px black solid;
+  background-color: #f0e6ef;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -285,8 +312,53 @@ footer .copyright {
 }
 
 h2 {
-  background-color: chartreuse;
   text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#formulaireCommande form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#formulaireCommande form label {
+  padding: 1rem;
+}
+#formulaireCommande form input {
+  width: 80%;
+  padding: 1rem;
+  font-size: 2rem;
+}
+#formulaireCommande form textarea {
+  width: 80%;
+  font-size: 2rem;
+}
+#formulaireCommande form .infoChampManquant {
+  color: red;
+  font-weight: 900;
+  padding-bottom: 1rem;
+}
+#formulaireCommande form #envoyerFormulaire {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background-image: radial-gradient(circle, #f0e6ef 20%, #cfc4e0 77%);
+  background-size: 300%;
+  background-position: left;
+  transition: background-image 1s;
+}
+#formulaireCommande form #envoyerFormulaire:hover {
+  cursor: pointer;
+  background-position: right 200px;
+  color: black;
+  transform: scale(1.01);
+  opacity: 0.9;
+  transition-property: transform, opacity;
+  transition-duration: 1s, 1s;
 }
 
 .gras {

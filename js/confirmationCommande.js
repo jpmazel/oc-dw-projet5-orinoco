@@ -18,7 +18,7 @@ const structureConfirmationCommande = `
 <div class="recapCommande">
   <p>Merci pour votre commande</p>
   <p>
-    Votre commande numéro: <span class="gras">${responseId}</span> a bien été
+    Votre <span class="gras">commande numéro: ${responseId}</span> a bien été
     prise en compte
   </p>
   <p>

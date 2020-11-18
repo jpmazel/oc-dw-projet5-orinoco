@@ -84,6 +84,10 @@
   }
 }
 
+.gras{
+  font-weight: bold;
+}
+
 html,
 body {
   font-family: "Open Sans", sans-serif;
@@ -94,9 +98,10 @@ body {
   width: 80vw;
   margin: auto;
   display: flex;
+  justify-content: center;
   @include tailleIntermediaire-container;
   @include smartphone-container;
-  // border: 1px red solid;
+  border: 1px red solid;
 }
 
 .mise-en-page-produit {
@@ -427,41 +432,48 @@ h2 {
   }
 }
 
-// form {
-//   // background-color: cadetblue;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-
-//   input {
-//     background-color: coral;
-//     width: 80vw;
-//   }
-
-//   .infoChampManquant {
-//     color: rgb(255, 238, 0);
-//     font-weight: 900;
-//   }
-
-//   textarea {
-//     background-color: crimson;
-//     width: 80vw;
-//   }
-// }
 
 //************************confirmation-commande---------------
-.gras {
-  font-weight: 900;
+
+.grid {
+  display: grid;
+  grid-template-columns: auto ;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  grid-template-areas:
+    "header "
+    "produit_photo "
+    "footer ";
 }
 
-#container-recapitulatif-commande {
+
+#container-recapitulatif-commande { 
   width: 80vw;
-  border: 1px solid black;
-  padding-bottom: 1rem;
+  
+  border: solid 0.5px black;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  // max-width: 100%;
+  
+  
+  border-radius: 2rem;
+  background-color: $couleurOrinoco;
+
+  // @include smartphone-mise-en-page-produit;
+ 
+  @include tailleIntermediaire-container;
+  
 }
 
 .recapCommande {
+//  align-self: stretch;
+
   p:nth-child(1) {
+  
+
     color: red;
     font-weight: 900;
     font-size: 2rem;

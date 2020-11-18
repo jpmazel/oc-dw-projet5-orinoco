@@ -1,5 +1,5 @@
-//----------------Mettre les données sur la page index.html
-//----------------PRODUIT ---------------------------------
+//--Afficher les produits avec leurs photos et leurs caractéristique sur la page index.html
+//--Aller chercher les données sur la web API ---------------------------------
 
 const dataApi = fetch("http://localhost:3000/api/cameras");
 
@@ -58,7 +58,7 @@ dataApi.then(async (responseData) => {
         
         `;
 
-        //Injection html
+        //Injection du code dans index.html
         positionElement.innerHTML = structureProduits;
       }
     }

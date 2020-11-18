@@ -1,4 +1,4 @@
-//Récupération de la chaîne de requête dans l'url
+//Récupération de la chaîne de requête dans l'url qui provient de index.html lorsque l'on clique sur un produit
 const queryString_url_id = window.location.search;
 
 //Méthode pour extraire l'id
@@ -21,7 +21,7 @@ dataApi.then(async (responseData) => {
     //Sélection de la classe ou je vais injecter le code html
     const positionElement2 = document.querySelector(".container-page-produit");
 
-    //la structure html pour l'affichage du produit sélectionné
+    //La structure html pour l'affichage du produit sélectionné
     const structureProduit2 = `
     <div class="mise-en-page-produit">  
                 <div class="produit_photo">
@@ -59,7 +59,7 @@ dataApi.then(async (responseData) => {
             </div>
           </div>
           `;
-    //Le formulaire(form où s'afficheles options) s'adpate au nombre de "lenses" qu'il y dans l'objet du produit
+    //Le formulaire (form où s'affiche les options) s'adpate au nombre de "lenses" qu'il y dans l'objet du produit
     const optionQuantite = response.lenses;
     let structureOptions = [];
 
@@ -72,14 +72,14 @@ dataApi.then(async (responseData) => {
       `;
     }
 
-    //Injection html dans la page web produit
+    //Injection du code html dans la page web produit
     positionElement2.innerHTML = structureProduit2;
 
-    //Injection html dans la page produit pour le choix des options dans le formulaire
+    //Injection du code html dans la page produit pour le choix des options dans le formulaire
     const positionElement3 = document.querySelector("#option_produit");
     positionElement3.innerHTML = structureOptions;
 
-    //QUANTITE : choisir la quantité de produit, limitation à 4 quantités car objet prix élevé
+    //QUANTITE : choisir la quantité de produit, limitation à 4 quantités car les objet ont un prix élevé-structure HTML
     const structureQuantité = `
     <option value="1">1</option>
     <option value="2">2</option>
@@ -88,20 +88,24 @@ dataApi.then(async (responseData) => {
     `;
 
     //QUANTITE : Afficher les quantités de structureQuantité dans le formulaire
+    //Sélection de l'élément
     const positionElementQuantite = document.querySelector("#quantite_produit");
+
+    //Injection du code html
     positionElementQuantite.innerHTML = structureQuantité;
+
 
     // LA GESTION DU PANIER
     // La récupération des données séléctionné par l'utilisateur et envoie du panier
 
-    //sélection de l'id du formulaire
+    //Sélection de l'id du formulaire
     const idForm = document.querySelector("#option_produit");
 
     //Sélection du bouton Ajouter l'article au panier
     const envoyerPanier = document.querySelector("#btn-envoyer");
 
     //LE ADDEVENTLISTENER
-    //addEventListener - Ecouter le bouton et envoyer le panier-
+    //addEventListener - Ecouter le click du bouton et envoyer le panier-
     envoyerPanier.addEventListener("click", (event) => {
       event.preventDefault();
 
@@ -125,7 +129,7 @@ dataApi.then(async (responseData) => {
 
 
       //LE LOCAL STORAGE
-      //Stocker la récupération des valeurs du formulaire dans le local storage
+      //Stocker la récupération des valeurs du formulaire (choix client) dans le local storage
 
       //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
       let produitEnregistreDansLocalStorage = JSON.parse(
@@ -148,7 +152,7 @@ dataApi.then(async (responseData) => {
 
       //Fonction ajouter un produit sélectionné dans le localStorage
       const ajoutProduitLocalStorage = () => {
-        //ajout dans le tableau de l'objet avec les values choisi par l'utilisateur
+        //Ajout dans le tableau de l'objet avec les values choisi par l'utilisateur
         produitEnregistreDansLocalStorage.push(optionsProduit);
 
         //La transformation en format JSON et l'envoyer dans la key "produit" du localStorage

@@ -57,7 +57,7 @@ for (let l = 0; l < btn_supprimer.length; l++) {
     let id_selectionner_suppression =
       produitEnregistreDansLocalStorage[l].id_ProduitSelectionner;
     
-    //Avec la méthode filter je sélectionne  les éléments à garder et je supprime l'élément où le btn suppr a été cliqué
+    //Avec la méthode filter je sélectionne  les éléments à garder et je supprime l'élément où le btn-supprimer a été cliqué
     produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(
       (el) => el.id_ProduitSelectionner !== id_selectionner_suppression
     );
@@ -69,14 +69,11 @@ for (let l = 0; l < btn_supprimer.length; l++) {
       JSON.stringify(produitEnregistreDansLocalStorage)
     );
 
-    //Alert pour avertir que le produit a été supprimer et rechargement de la page
+    //Pop Up Alert pour avertir que le produit a été supprimer et rechargement de la page
     alert("Ce produit a été supprimer du panier");
     window.location.href = "panier.html";
   });
 }
-
-
-
 
 
 //LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER
@@ -87,7 +84,7 @@ const btn_tous_supprimer_panier_html = `
 </div>
 `;
 
-//insertion du bouton dans le HTML du panier
+//Insertion du bouton dans le HTML du panier
 positionElement3.insertAdjacentHTML(
   "beforeend",
   btn_tous_supprimer_panier_html
@@ -99,16 +96,17 @@ const btn_tous_supprimer_panier = document.querySelector(
 );
 
 //-----Suppression de la key "produit" du local Storage pour vider entierement le panier
+// Le addEventListener
 btn_tous_supprimer_panier.addEventListener("click", (e) => {
   // e.preventDefault();
 
   //.removeItem pour vider le local storage
   localStorage.removeItem("produit");
 
-  //alert "Le panier a été vidé"
+  //Pop up alert "Le panier a été vidé"
   alert("Le panier a été vidé");
 
-  //rechargement de la page panier
+  //Rechargement de la page panier.html
   window.location.href = "panier.html";
 });
 
@@ -138,17 +136,19 @@ const affichagepriceHtml = `
 <div class="affichage-prix-html">Le prix total est de : <span class="gras"> ${priceTotal} € </span></div>
 `;
 
-//injection html dans la page panier après le dernier enfant
+//Injection du code html dans la page panier après le dernier enfant
 positionElement3.insertAdjacentHTML("beforeend", affichagepriceHtml);
 
 //FIN - Le montant total du panier
 
 
 //LE FORMULAIRE DE COMMANDE
+//La fonction afficherFormulaireHtml(){}
 const afficherFormulaireHtml = () => {
   //Sélection élément du DOM pour le positionnement du formulaire
   const positionElement4 = document.querySelector("#container-produits-panier");
 
+ //La strucuture du code HTML du formulaire de commande
   const structureFormulaire = `
   
         <div id="formulaireCommande">
@@ -184,7 +184,7 @@ const afficherFormulaireHtml = () => {
         </div>
   `;
 
-  //Injection HTML
+  //Injection du code dans la page HTML
   positionElement4.insertAdjacentHTML("beforeend", structureFormulaire);
 };
 
@@ -194,12 +194,11 @@ afficherFormulaireHtml();
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
 
-//ADDEVENTLISTENER
+//ADDEVENTLISTENER : ecoute du click du bouton envoyer le formulaire (Confirmation de la commande)
 btnEnvoyerFormulaire.addEventListener("click", (e) => {
   e.preventDefault();
 
-  //Création / définition d'une classe pour fabriquer l'objet dans lequel iront
-  //les values du formulaire
+  //Création / définition d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
   class Formulaire {
     constructor(input) {
       this.prenom = document.querySelector("#prenom").value;
@@ -217,7 +216,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   console.log("formulaireValues");
   console.log(formulaireValues);
 
-  //GESTION VALIDATION DU FORMULAIRE
+  //GESTION VALIDATION DU FORMULAIRE : les REGEX
   const textAlert = (value) => {
     return `${value}: Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caractères`;
   };
@@ -248,6 +247,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   };
   //---------------------------
 
+  //Fonction prenomControle()
   function prenomControle() {
     //Contrôle de la validité du prenom
     const lePrenom = formulaireValues.prenom;
@@ -261,6 +261,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
+  //Fonction nomControle()
   function nomControle() {
     //Contrôle de la validité du nom
     const leNom = formulaireValues.nom;
@@ -274,6 +275,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
+  //Fonction villeControle()
   function villeControle() {
     //Contrôle de la validité de la ville
     const laville = formulaireValues.ville;
@@ -287,6 +289,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
+  //Fonction codePostalControle()
   function codePostalControle() {
     //Contrôle de la validité du code postal
     const lecodePostal = formulaireValues.codePostal;
@@ -300,6 +303,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
+  //Fonction emailControle()
   function emailControle() {
     //Contrôle de la validité de l'email
     const leEmail = formulaireValues.email;
@@ -313,6 +317,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
+  //Fonction adresseControle()
   function adresseControle(){
     const leAdresse = formulaireValues.adresse;
     if(regExAdresse(leAdresse)){
@@ -325,7 +330,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     }
   };
 
-  //Contrôle validité formulaire avant envoie dans le local storage
+  //Contrôle de la validité du formulaire avant envoie dans le local storage
   if (prenomControle() && nomControle() && codePostalControle() && emailControle() && adresseControle() && villeControle()) {
     //Mettre l'objet "formulaireValues" dans le local storage
     localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
@@ -346,6 +351,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //FIN - GESTION VALIDATION DU FORMULAIRE  
 });//Fin addEventListener
 
+//Fonction envoieVersServeur()
 function envoieVersServeur(aEnvoyer){
   //Envoie de l'objet "aEnvoyer" vers le serveur
   const promise01 = fetch("https://restapi.fr/api/commandeTest1", {
@@ -390,6 +396,7 @@ function envoieVersServeur(aEnvoyer){
   });
 }
 
+
 //METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE
 //Prendre la key dans le localStorage et la mettre dans une variable
 const dataLocalStorage = localStorage.getItem("formulaireValues");
@@ -405,6 +412,8 @@ function remplirChampInputDepuisLocalStorage(input) {
     document.querySelector(`#${input}`).value = dataLocalStorageObjet[input];
   }
 }
+
+//Appel des fonctions pour remplir automatiquement les champs du formulaire suivant les données du localStorage
 
 remplirChampInputDepuisLocalStorage("prenom");
 remplirChampInputDepuisLocalStorage("nom");

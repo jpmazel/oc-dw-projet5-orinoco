@@ -8,10 +8,11 @@ const priceTotal = localStorage.getItem("priceTotal");
 console.log(`priceTotal : ${priceTotal}`);
 
 
-//LA STRUCTURE HTML DE LA PAGE confirmationCommande.js
+//LA STRUCTURE HTML DE LA PAGE confirmationCommande.html
 //Sélection élément du DOM pour le positionnement
 const positionElement5 = document.querySelector("#container-recapitulatif-commande");
 
+//La structure du code HTML
 const structureConfirmationCommande = `
 <h2>Récapitulatif de votre commande</h2>
 
@@ -29,14 +30,18 @@ const structureConfirmationCommande = `
 </div>
 `;
 
-//Injection HTML
+//Injection du HTML dans la pageconfirmation-commande.html
 positionElement5.insertAdjacentHTML("afterbegin", structureConfirmationCommande);
 
-//Effacer tout le local storage sauf le formulaire
+//---STRUCTURE HTML DE LA PAGE
+
+
+//Fonction éffacer tout le local storage sauf le formulaire
 function enleverCleLocalStorage(key){
     localStorage.removeItem(key);
 };
 
+//Appel des fonctions pour enlever les clés du local Storage
 enleverCleLocalStorage("priceTotal");
 enleverCleLocalStorage("produit");
 enleverCleLocalStorage("responseId");

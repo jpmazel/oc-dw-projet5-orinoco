@@ -1,3 +1,23 @@
+//FONCTION-----------------------------------------------------------------
+//Fonction pour savoir si le panier est vide
+function panierVide() {
+  if (
+    produitEnregistreDansLocalStorage === null ||
+    produitEnregistreDansLocalStorage == 0
+  ) {
+    //ne pas afficher le formulaire
+    console.log(`Le panier est vide : true`);
+    return true;
+    
+  } else {
+    console.log("Le panier est vide : false");
+    return false;    
+  }
+}
+
+//FIN Fonction--------------------------------------------------------------
+
+
 //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
 let produitEnregistreDansLocalStorage = JSON.parse(
   localStorage.getItem("produit")
@@ -6,7 +26,8 @@ let produitEnregistreDansLocalStorage = JSON.parse(
 console.log("produitEnregistreDansLocalStorage");
 console.log(produitEnregistreDansLocalStorage);
 
-//L'AFFICHAGE DES PRODUITS DU PANIER
+
+//L'AFFICHAGE DES PRODUITS DU PANIER------------------------------------------------------------
 //Sélection de la classe où je vais injecter le code HTML
 const positionElement3 = document.querySelector("#container-produits-panier");
 
@@ -25,7 +46,6 @@ if (
   positionElement3.innerHTML = panierVide;
 } else {
   //Si le panier n'est pas vide : afficher les produits dans le localStorage
-
   for (k = 0; k < produitEnregistreDansLocalStorage.length; k++) {
     structureProduitPanier =
       structureProduitPanier +
@@ -44,10 +64,10 @@ if (
     positionElement3.innerHTML = structureProduitPanier;
   }
 }
+//FIN de l'affichage des produits du panier------------------------------------------------------------------
 
-//Fin de l'affichage des produits du panier
 
-//GESTION DU BOUTTON SUPPRIMER L'ARTICLE
+//GESTION DU BOUTTON SUPPRIMER L'ARTICLE---------------------------------------------------------------------
 //Sélection des références de tous les boutons btn-supprimer
 let btn_supprimer = document.querySelectorAll(".btn-supprimer");
 
@@ -75,31 +95,20 @@ for (let l = 0; l < btn_supprimer.length; l++) {
     alert("Ce produit a été supprimer du panier");
     window.location.href = "panier.html";
   });
-}
+};
+//FIN-GESTION DU BOUTTON SUPPRIMER L'ARTICLE----------------------------------------------------
 
-//LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER-----------------------------
+
+
+
+if(panierVide() == false){
+//LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER---------------------------------------------
 //Le code HTML du boutton à afficher dans la page
 const btn_tous_supprimer_panier_html = `
 <div class="btn-tous-supprimer-panier">
 <button class="btn">Vider le panier</button>
 </div>
 `;
-
-//Fonction pour savoir si le panier est vide
-function panierVide() {
-  if (
-    produitEnregistreDansLocalStorage === null ||
-    produitEnregistreDansLocalStorage == 0
-  ) {
-    //ne pas afficher le formulaire
-    console.log(`Le panier est vide : true`);
-    return true;
-    
-  } else {
-    console.log("Le panier est vide : false");
-    return false;    
-  }
-}
 
 //Insertion du bouton dans le HTML du panier s'il n'est pas vide
 if (panierVide() == false) {
@@ -117,8 +126,7 @@ const btn_tous_supprimer_panier = document.querySelector(
 //Suppression de la key "produit" du local Storage pour vider entierement le panier
 //Le addEventListener
 btn_tous_supprimer_panier.addEventListener("click", (e) => {
-  // e.preventDefault();
-
+  
   //.removeItem pour vider le local storage
   localStorage.removeItem("produit");
 
@@ -271,12 +279,12 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Fonction pour gérer l'affichage du texte à coté de l'input pour indiquer qu'il faut le remplir correctement
   function dataChampManquantTextVide(querySelectorId) {
     document.querySelector(`#${querySelectorId}`).textContent = "";
-  }
+  };
 
   function dataChampManquantText(querySelectorId) {
     document.querySelector(`#${querySelectorId}`).textContent =
       "Veuillez bien remplir ce champ";
-  }
+  };
   
   //Fonction prenomControle()
   function prenomControle() {
@@ -289,8 +297,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantText("prenomManquant");
       alert(textAlert("Prénom"));
       return false;
-    }
-  }
+    };
+  };
 
   //Fonction nomControle()
   function nomControle() {
@@ -303,8 +311,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantText("nomManquant");
       alert(textAlert("Nom"));
       return false;
-    }
-  }
+    };
+  };
 
   //Fonction villeControle()
   function villeControle() {
@@ -317,8 +325,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantText("villeManquant");
       alert(textAlert("ville"));
       return false;
-    }
-  }
+    };
+  };
 
   //Fonction codePostalControle()
   function codePostalControle() {
@@ -331,8 +339,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantText("codePostalManquant");
       alert("Code Postal : doit être composé de 5 chiffres");
       return false;
-    }
-  }
+    };
+  };
 
   //Fonction emailControle()
   function emailControle() {
@@ -345,8 +353,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantText("emailManquant");
       alert("L'email n'est pas valide");
       return false;
-    }
-  }
+    };
+  };
 
   //Fonction adresseControle()
   function adresseControle() {
@@ -386,7 +394,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     envoieVersServeur(aEnvoyer);
   } else {
     alert("Veuillez bien remplir le formulaire");
-  }
+  };
 
   //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------
 }); //Fin addEventListener
@@ -463,3 +471,4 @@ remplirChampInputDepuisLocalStorage("email");
 
 console.log("dataLocalStorageObjet");
 console.log(dataLocalStorageObjet);
+};

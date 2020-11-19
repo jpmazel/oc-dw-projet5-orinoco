@@ -77,7 +77,7 @@ for (let l = 0; l < btn_supprimer.length; l++) {
   });
 }
 
-//LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER
+//LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER-----------------------------
 //Le code HTML du boutton à afficher dans la page
 const btn_tous_supprimer_panier_html = `
 <div class="btn-tous-supprimer-panier">
@@ -92,13 +92,17 @@ function panierVide() {
     produitEnregistreDansLocalStorage == 0
   ) {
     //ne pas afficher le formulaire
-  } else {
+    console.log(`Le panier est vide : true`);
     return true;
+    
+  } else {
+    console.log("Le panier est vide : false");
+    return false;    
   }
 }
 
 //Insertion du bouton dans le HTML du panier s'il n'est pas vide
-if (panierVide() == true) {
+if (panierVide() == false) {
   positionElement3.insertAdjacentHTML(
     "beforeend",
     btn_tous_supprimer_panier_html
@@ -110,8 +114,8 @@ const btn_tous_supprimer_panier = document.querySelector(
   ".btn-tous-supprimer-panier"
 );
 
-//-----Suppression de la key "produit" du local Storage pour vider entierement le panier
-// Le addEventListener
+//Suppression de la key "produit" du local Storage pour vider entierement le panier
+//Le addEventListener
 btn_tous_supprimer_panier.addEventListener("click", (e) => {
   // e.preventDefault();
 
@@ -125,9 +129,10 @@ btn_tous_supprimer_panier.addEventListener("click", (e) => {
   window.location.href = "panier.html";
 });
 
-//FIN - Le bouton pour vider entièrement le panier
+//FIN - Le bouton pour vider entièrement le panier-------------------------------------------
 
-//LE MONTANT TOTAL DU PANIER
+
+//LE MONTANT TOTAL DU PANIER-----------------------------------------------------------------
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 let priceTotlaCalcul = [];
 
@@ -155,9 +160,10 @@ const affichagepriceHtml = `
 //Injection du code html dans la page panier après le dernier enfant
 positionElement3.insertAdjacentHTML("beforeend", affichagepriceHtml);
 
-//FIN - Le montant total du panier
+//FIN - Le montant total du panier------------------------------------------------------------
 
-//LE FORMULAIRE DE COMMANDE
+
+//LE FORMULAIRE DE COMMANDE-------------------------------------------------------------------
 //La fonction afficherFormulaireHtml(){}
 const afficherFormulaireHtml = () => {
   //Sélection élément du DOM pour le positionnement du formulaire
@@ -215,7 +221,10 @@ if (
 
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
+//FIN Formulaire de commande--------------------------------------------------------------------------------
 
+
+//GESTION VALIDATION DU FORMULAIRE--------------------------------------------------------------------------
 //ADDEVENTLISTENER : ecoute du click du bouton envoyer le formulaire (Confirmation de la commande)
 btnEnvoyerFormulaire.addEventListener("click", (e) => {
   e.preventDefault();
@@ -268,8 +277,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     document.querySelector(`#${querySelectorId}`).textContent =
       "Veuillez bien remplir ce champ";
   }
-  //---------------------------
-
+  
   //Fonction prenomControle()
   function prenomControle() {
     //Contrôle de la validité du prenom
@@ -352,8 +360,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
         "L'adresse doit contenir que des lettres sans ponctuation et des chiffres"
       );
       return false;
-    }
-  }
+    };
+  };
 
   //Contrôle de la validité du formulaire avant envoie dans le local storage
   if (
@@ -380,10 +388,11 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     alert("Veuillez bien remplir le formulaire");
   }
 
-  //FIN - GESTION VALIDATION DU FORMULAIRE
+  //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------
 }); //Fin addEventListener
 
-//Fonction envoieVersServeur()
+
+//FONCTION envoieVersServeur()------------------------------------------------------
 function envoieVersServeur(aEnvoyer) {
   //Envoie de l'objet "aEnvoyer" vers le serveur
   const promise01 = fetch("https://restapi.fr/api/commandeTest1", {
@@ -424,9 +433,10 @@ function envoieVersServeur(aEnvoyer) {
       alert(`ERREUR qui vient du catch() ${e}`);
     }
   });
-}
+}//FIN FONCTION envoieVersServeur()-----------------------------------------------------------
 
-//METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE
+
+//METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE-----------------------------
 //Prendre la key dans le localStorage et la mettre dans une variable
 const dataLocalStorage = localStorage.getItem("formulaireValues");
 

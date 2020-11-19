@@ -6,7 +6,6 @@ let produitEnregistreDansLocalStorage = JSON.parse(
 console.log("produitEnregistreDansLocalStorage");
 console.log(produitEnregistreDansLocalStorage);
 
-
 //L'AFFICHAGE DES PRODUITS DU PANIER
 //Sélection de la classe où je vais injecter le code HTML
 const positionElement3 = document.querySelector("#container-produits-panier");
@@ -59,12 +58,12 @@ for (let l = 0; l < btn_supprimer.length; l++) {
     //Sélection de l'id du produit qui va être supprimer en cliquant sur le bouton
     let id_selectionner_suppression =
       produitEnregistreDansLocalStorage[l].id_ProduitSelectionner;
-    
+
     //Avec la méthode filter je sélectionne  les éléments à garder et je supprime l'élément où le btn-supprimer a été cliqué
     produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(
       (el) => el.id_ProduitSelectionner !== id_selectionner_suppression
     );
-    
+
     //On envoie la variable dans le local Storage
     //La transformation en format JSON et l'envoyer dans la key "produit" du localStorage
     localStorage.setItem(
@@ -78,7 +77,6 @@ for (let l = 0; l < btn_supprimer.length; l++) {
   });
 }
 
-
 //LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER
 //Le code HTML du boutton à afficher dans la page
 const btn_tous_supprimer_panier_html = `
@@ -87,11 +85,25 @@ const btn_tous_supprimer_panier_html = `
 </div>
 `;
 
-//Insertion du bouton dans le HTML du panier
-positionElement3.insertAdjacentHTML(
-  "beforeend",
-  btn_tous_supprimer_panier_html
-);
+//Fonction pour savoir si le panier est vide
+function panierVide() {
+  if (
+    produitEnregistreDansLocalStorage === null ||
+    produitEnregistreDansLocalStorage == 0
+  ) {
+    //ne pas afficher le formulaire
+  } else {
+    return true;
+  }
+}
+
+//Insertion du bouton dans le HTML du panier s'il n'est pas vide
+if (panierVide() == true) {
+  positionElement3.insertAdjacentHTML(
+    "beforeend",
+    btn_tous_supprimer_panier_html
+  );
+}
 
 //La sélection de la référence du bouton "btn-tous-supprimer-panier"
 const btn_tous_supprimer_panier = document.querySelector(
@@ -115,25 +127,21 @@ btn_tous_supprimer_panier.addEventListener("click", (e) => {
 
 //FIN - Le bouton pour vider entièrement le panier
 
-
-
-
 //LE MONTANT TOTAL DU PANIER
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 let priceTotlaCalcul = [];
 
 //Aller chercher les prix dans le panier
-if (produitEnregistreDansLocalStorage == null){
-//pour supprimer l'erreur .length lorsque le panier est vide
-}else{
+if (produitEnregistreDansLocalStorage == null) {
+  //pour supprimer l'erreur .length lorsque le panier est vide
+} else {
   for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
     let priceProduitsDansLePanier = produitEnregistreDansLocalStorage[m].price;
-  
+
     //Mettre les prix du panier dans la variable "priceTotlaCalcul"
-    priceTotlaCalcul.push(priceProduitsDansLePanier);  
+    priceTotlaCalcul.push(priceProduitsDansLePanier);
   }
 }
-
 
 //Additionner les prix qu'il y a dans le tableau de la variable "priceTotalCalcul" avec la méthode .reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -149,14 +157,13 @@ positionElement3.insertAdjacentHTML("beforeend", affichagepriceHtml);
 
 //FIN - Le montant total du panier
 
-
 //LE FORMULAIRE DE COMMANDE
 //La fonction afficherFormulaireHtml(){}
 const afficherFormulaireHtml = () => {
   //Sélection élément du DOM pour le positionnement du formulaire
   const positionElement4 = document.querySelector("#container-produits-panier");
 
- //La strucuture du code HTML du formulaire de commande
+  //La strucuture du code HTML du formulaire de commande
   const structureFormulaire = `
   
         <div id="formulaireCommande">
@@ -196,8 +203,15 @@ const afficherFormulaireHtml = () => {
   positionElement4.insertAdjacentHTML("beforeend", structureFormulaire);
 };
 
-//Affichage du formulaire
-afficherFormulaireHtml();
+//Affichage du formulaire si le panier contient au moins un article
+if (
+  produitEnregistreDansLocalStorage === null ||
+  produitEnregistreDansLocalStorage == 0
+) {
+  //ne pas afficher le formulaire
+} else {
+  afficherFormulaireHtml();
+}
 
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
@@ -214,7 +228,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       this.adresse = document.querySelector("#adresse").value;
       this.ville = document.querySelector("#ville").value;
       this.codePostal = document.querySelector("#codePostal").value;
-      this.email = document.querySelector("#email").value;      
+      this.email = document.querySelector("#email").value;
     }
   }
 
@@ -235,7 +249,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
   const regExCodePostal = (value) => {
     return /^[0-9]{5}$/.test(value);
-  }
+  };
 
   const regExEmail = (value) => {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
@@ -246,13 +260,14 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   };
 
   //Fonction pour gérer l'affichage du texte à coté de l'input pour indiquer qu'il faut le remplir correctement
-  function dataChampManquantTextVide(querySelectorId){
+  function dataChampManquantTextVide(querySelectorId) {
     document.querySelector(`#${querySelectorId}`).textContent = "";
-  };
+  }
 
-  function dataChampManquantText(querySelectorId){
-    document.querySelector(`#${querySelectorId}`).textContent = "Veuillez bien remplir ce champ";
-  };
+  function dataChampManquantText(querySelectorId) {
+    document.querySelector(`#${querySelectorId}`).textContent =
+      "Veuillez bien remplir ce champ";
+  }
   //---------------------------
 
   //Fonction prenomControle()
@@ -263,11 +278,11 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       dataChampManquantTextVide("prenomManquant");
       return true;
     } else {
-      dataChampManquantText("prenomManquant");      
+      dataChampManquantText("prenomManquant");
       alert(textAlert("Prénom"));
       return false;
     }
-  };
+  }
 
   //Fonction nomControle()
   function nomControle() {
@@ -281,7 +296,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       alert(textAlert("Nom"));
       return false;
     }
-  };
+  }
 
   //Fonction villeControle()
   function villeControle() {
@@ -295,7 +310,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       alert(textAlert("ville"));
       return false;
     }
-  };
+  }
 
   //Fonction codePostalControle()
   function codePostalControle() {
@@ -309,7 +324,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       alert("Code Postal : doit être composé de 5 chiffres");
       return false;
     }
-  };
+  }
 
   //Fonction emailControle()
   function emailControle() {
@@ -323,65 +338,74 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       alert("L'email n'est pas valide");
       return false;
     }
-  };
+  }
 
   //Fonction adresseControle()
-  function adresseControle(){
+  function adresseControle() {
     const leAdresse = formulaireValues.adresse;
-    if(regExAdresse(leAdresse)){
+    if (regExAdresse(leAdresse)) {
       dataChampManquantTextVide("adresseManquant");
       return true;
-    }else{
+    } else {
       dataChampManquantText("adresseManquant");
-      alert("L'adresse doit contenir que des lettres sans ponctuation et des chiffres")
+      alert(
+        "L'adresse doit contenir que des lettres sans ponctuation et des chiffres"
+      );
       return false;
     }
-  };
+  }
 
   //Contrôle de la validité du formulaire avant envoie dans le local storage
-  if (prenomControle() && nomControle() && codePostalControle() && emailControle() && adresseControle() && villeControle()) {
+  if (
+    prenomControle() &&
+    nomControle() &&
+    codePostalControle() &&
+    emailControle() &&
+    adresseControle() &&
+    villeControle()
+  ) {
     //Mettre l'objet "formulaireValues" dans le local storage
     localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
-    localStorage.setItem("priceTotal",JSON.stringify(priceTotal));
+    localStorage.setItem("priceTotal", JSON.stringify(priceTotal));
 
     //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
     const aEnvoyer = {
-    produitEnregistreDansLocalStorage,
-    formulaireValues,priceTotal
-  };    
+      produitEnregistreDansLocalStorage,
+      formulaireValues,
+      priceTotal,
+    };
 
-  envoieVersServeur(aEnvoyer);
-
+    envoieVersServeur(aEnvoyer);
   } else {
     alert("Veuillez bien remplir le formulaire");
-  };
+  }
 
-  //FIN - GESTION VALIDATION DU FORMULAIRE  
-});//Fin addEventListener
+  //FIN - GESTION VALIDATION DU FORMULAIRE
+}); //Fin addEventListener
 
 //Fonction envoieVersServeur()
-function envoieVersServeur(aEnvoyer){
+function envoieVersServeur(aEnvoyer) {
   //Envoie de l'objet "aEnvoyer" vers le serveur
   const promise01 = fetch("https://restapi.fr/api/commandeTest1", {
-    method: "POST", 
+    method: "POST",
     body: JSON.stringify(aEnvoyer),
     headers: {
-      "Content-Type" : "application/json", 
+      "Content-Type": "application/json",
     },
   });
 
-  //Pour voir le résultat du serveur dans la console  
-  promise01.then(async(response)=>{
+  //Pour voir le résultat du serveur dans la console
+  promise01.then(async (response) => {
     //Si la promesse n'est pas résolu, si elle est rejeté - gestions des erreurs
-    try{
-      const contenu = await response.json();  
+    try {
+      const contenu = await response.json();
       console.log("contenu de response");
       console.log(contenu);
 
-      if(response.ok){
+      if (response.ok) {
         console.log(`Resultat de response.ok : ${response.ok}`);
 
-        //Récupération de l'id de la response du serveur 
+        //Récupération de l'id de la response du serveur
         console.log("id de response");
         console.log(contenu._id);
 
@@ -390,20 +414,17 @@ function envoieVersServeur(aEnvoyer){
 
         //Aller vers la page confirmation-commande
         window.location = "confirmation-commande.html";
-
-      } else{
-        console.log(`Réponse du serveur : ${response.status}`)
-        alert(`Problème avec le serveur : erreur ${response.status}`)
-      };
-
-    }catch(e){
-      console.log("ERREUR qui vient du catch()");      
+      } else {
+        console.log(`Réponse du serveur : ${response.status}`);
+        alert(`Problème avec le serveur : erreur ${response.status}`);
+      }
+    } catch (e) {
+      console.log("ERREUR qui vient du catch()");
       console.log(e);
       alert(`ERREUR qui vient du catch() ${e}`);
-    };
+    }
   });
 }
-
 
 //METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE
 //Prendre la key dans le localStorage et la mettre dans une variable
@@ -414,9 +435,9 @@ const dataLocalStorageObjet = JSON.parse(dataLocalStorage);
 
 //Fonction pour que le champ du formulaire soit rempli par les données du  local storage si elle existe
 function remplirChampInputDepuisLocalStorage(input) {
-  if(dataLocalStorageObjet == null){
+  if (dataLocalStorageObjet == null) {
     console.log("le local storage à pour valeur null");
-  }else{
+  } else {
     document.querySelector(`#${input}`).value = dataLocalStorageObjet[input];
   }
 }

@@ -45,3 +45,8 @@ function enleverCleLocalStorage(key){
 enleverCleLocalStorage("priceTotal");
 enleverCleLocalStorage("produit");
 enleverCleLocalStorage("responseId");
+
+//Si la page a été actualisé , charger le page index.html
+if (responseId == null || priceTotal == null ){
+  window.location.href="index.html";
+}

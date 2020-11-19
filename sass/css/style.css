@@ -179,6 +179,7 @@ header .menu img {
   order: 0;
   max-width: 20rem;
   border-radius: 1rem;
+  margin-left: 0.5rem;
 }
 header .menu ul {
   order: 1;

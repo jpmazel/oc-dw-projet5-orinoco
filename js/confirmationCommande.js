@@ -24,7 +24,7 @@ const structureConfirmationCommande = `
   </p>
   <p>
     Le montant de votre commande est de :
-    <span class="gras">${priceTotal}</span> €
+    <span class="gras">${priceTotal}</span>€
   </p>
   <p class="gras">Au plaisir de vous revoir</p>
 </div>

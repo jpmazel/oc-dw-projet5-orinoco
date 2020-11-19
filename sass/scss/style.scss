@@ -56,7 +56,7 @@
   padding: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  border-radius: 1rem;
+  border-radius: $borderRadius;
 
   background-image: radial-gradient(
     circle,
@@ -108,7 +108,7 @@ body {
   display: flex;
   border: solid 0.5px black;
   margin-bottom: 1rem; //espacement entre produit
-  border-radius: 2rem;
+  border-radius: $borderRadius;
   background-color: $couleurOrinoco;
   // height: 20rem;
   @include smartphone-mise-en-page-produit;
@@ -126,7 +126,7 @@ body {
       object-fit: cover;
       // object-position: bottom right;
 
-      border-radius: 2rem;
+      border-radius: $borderRadius;
       box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.63);
     }
   }
@@ -160,7 +160,7 @@ header {
 
   .menu {
     background-color: $couleurOrinoco;
-    border-radius: 1rem;
+    border-radius: $borderRadius;
     border: 1px black solid;
 
     .container-flexbox {
@@ -176,8 +176,8 @@ header {
     img {
       order: 0;
       max-width: 20rem;
-      border-radius: 1rem;
-      margin-left: 0.5rem;
+      border-radius: $borderRadius;
+      margin-left: 1rem;
     }
     ul {
       order: 1;
@@ -203,7 +203,7 @@ header {
 footer {
   display: flex;
   flex-direction: column;
-  border-radius: 2rem;
+  border-radius: $borderRadius;
   border: 1px black solid;
   height: auto;
   // margin: auto;
@@ -283,7 +283,7 @@ footer {
 
   justify-content: center;
   // border: 1px solid black;
-  border-radius: 2rem;
+  border-radius: $borderRadius;
 
   .container-recapitulatif {
     background-color: $couleurOrinoco;
@@ -294,7 +294,7 @@ footer {
     justify-content: space-between;
     align-items: center;
 
-    border-radius: 2rem;
+    border-radius: $borderRadius;
     div {
 
       .prix-produit{
@@ -325,7 +325,7 @@ footer {
 
 .btn-supprimer {
   padding: 0.8rem;
-  border-radius: 1rem;
+  border-radius: $borderRadius;
   transition: background-color 0.8s;
   &:hover {
     background-color: rgba(255, 0, 0, 0.459);
@@ -359,7 +359,7 @@ footer {
 
 .affichage-prix-html {
   border: 1px black solid;
-  border-radius: 1rem;
+  border-radius: $borderRadius;
   background-color: $couleurOrinoco;
   text-align: center;
 
@@ -374,7 +374,7 @@ footer {
 #formulaireCommande {
   border: 1px black solid;
   background-color: $couleurOrinoco;
-  border-radius: 1rem;
+  border-radius: $borderRadius;
 
   display: flex;
   flex-direction: column;
@@ -420,7 +420,7 @@ h2 {
 
     #envoyerFormulaire {
       padding: 1rem;
-      border-radius: 1rem;
+      border-radius: $borderRadius;
       margin-top: 1rem;
       margin-bottom: 1rem;
 
@@ -468,6 +468,9 @@ h2 {
 
 #container-recapitulatif-commande {
   width: 80vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
 
   border: solid 0.5px black;
   align-self: center;
@@ -476,7 +479,7 @@ h2 {
 
   align-items: center;
 
-  border-radius: 1rem;
+  border-radius: $borderRadius;
   background-color: $couleurOrinoco;
 
   @include tailleIntermediaire-container;

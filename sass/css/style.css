@@ -352,6 +352,7 @@ h2 {
 #formulaireCommande form textarea {
   width: 80%;
   font-size: 2rem;
+  font-family: "Open Sans";
 }
 #formulaireCommande form .infoChampManquant {
   color: red;

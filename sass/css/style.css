@@ -88,7 +88,6 @@ body {
   margin: auto;
   display: flex;
   justify-content: center;
-  border: 1px red solid;
 }
 @media only screen and (max-width: 985px) {
   .container {
@@ -263,17 +262,31 @@ footer .copyright {
   padding: 2rem;
   margin-bottom: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-radius: 2rem;
 }
+#container-produits-panier .container-recapitulatif div .prix-produit {
+  align-self: center;
+}
 #container-produits-panier .container-recapitulatif div:nth-child(2) {
+  display: flex;
+  width: auto;
   padding-left: 1rem;
+}
+#container-produits-panier .container-recapitulatif div:nth-child(2) span {
+  align-self: center;
+  margin-right: 0.3rem;
 }
 
 .btn-supprimer {
   padding: 0.8rem;
   border-radius: 1rem;
+  transition: background-color 0.8s;
+}
+.btn-supprimer:hover {
+  background-color: rgba(255, 0, 0, 0.459);
+  cursor: pointer;
 }
 
 .btn-tous-supprimer-panier {
@@ -382,7 +395,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: #f0e6ef;
 }
 @media only screen and (max-width: 985px) {

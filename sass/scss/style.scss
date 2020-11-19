@@ -84,7 +84,7 @@
   }
 }
 
-.gras{
+.gras {
   font-weight: bold;
 }
 
@@ -101,7 +101,7 @@ body {
   justify-content: center;
   @include tailleIntermediaire-container;
   @include smartphone-container;
-  border: 1px red solid;
+  // border: 1px red solid;
 }
 
 .mise-en-page-produit {
@@ -290,27 +290,46 @@ footer {
     padding: 2rem;
     margin-bottom: 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     border-radius: 2rem;
-    div{
-      &:nth-child(2){
-        padding-left: 1rem;
-        // color: red;
-        // font-size: 4rem;
+    div {
+
+      .prix-produit{
+        // background: violet; 
+        align-self: center;    
+      }
+
+      &:nth-child(1) {
+        // background: green;
+      }
+
+      &:nth-child(2) {
+        // background: red;
+        display: flex;
+
+        span {
+          align-self: center;
+          margin-right: 0.3rem;
+        }
+
+        
+        width: auto;
+        padding-left: 1rem;        
       }
     }
-
-    
   }
-
-  
 }
 
 .btn-supprimer {
   padding: 0.8rem;
   border-radius: 1rem;
+  transition: background-color 0.8s;
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.459);
+    cursor: pointer;
+  }
 }
 
 .btn-tous-supprimer-panier {
@@ -402,7 +421,7 @@ h2 {
       border-radius: 1rem;
       margin-top: 1rem;
       margin-bottom: 1rem;
-      
+
       font-size: 2rem;
       font-weight: bold;
 
@@ -432,12 +451,11 @@ h2 {
   }
 }
 
-
 //************************confirmation-commande---------------
 
 .grid {
   display: grid;
-  grid-template-columns: auto ;
+  grid-template-columns: auto;
   grid-template-rows: auto;
   grid-row-gap: 1rem;
   grid-template-areas:
@@ -446,34 +464,26 @@ h2 {
     "footer ";
 }
 
-
-#container-recapitulatif-commande { 
+#container-recapitulatif-commande {
   width: 80vw;
-  
+
   border: solid 0.5px black;
   align-self: center;
   display: flex;
   flex-direction: column;
-  
+
   align-items: center;
-  // max-width: 100%;
-  
-  
-  border-radius: 2rem;
+
+  border-radius: 1rem;
   background-color: $couleurOrinoco;
 
-  // @include smartphone-mise-en-page-produit;
- 
   @include tailleIntermediaire-container;
-  
 }
 
 .recapCommande {
-//  align-self: stretch;
+  //  align-self: stretch;
 
   p:nth-child(1) {
-  
-
     color: red;
     font-weight: 900;
     font-size: 2rem;

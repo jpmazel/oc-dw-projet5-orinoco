@@ -33,12 +33,15 @@ if (
       `
     <div class="container-recapitulatif">
       <div><span class="gras">Quantité :</span> ${produitEnregistreDansLocalStorage[k].quantite} - ${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</div>
-      <div><span class="gras">${produitEnregistreDansLocalStorage[k].price} €</span>  <button class="btn-supprimer"> supprimer </button> </div>
+      <div>
+        <div class="prix-produit"><span class="gras">${produitEnregistreDansLocalStorage[k].price}€</span></div> 
+        <div><button class="btn-supprimer"> supprimer </button></div>
+       </div>
     </div>      
     `;
   }
   if (k == produitEnregistreDansLocalStorage.length) {
-    //Injection html dans la page panier
+    //Injection du code html dans la page panier
     positionElement3.innerHTML = structureProduitPanier;
   }
 }

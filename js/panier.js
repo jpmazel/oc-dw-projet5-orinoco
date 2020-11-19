@@ -123,12 +123,17 @@ btn_tous_supprimer_panier.addEventListener("click", (e) => {
 let priceTotlaCalcul = [];
 
 //Aller chercher les prix dans le panier
-for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
-  let priceProduitsDansLePanier = produitEnregistreDansLocalStorage[m].price;
-
-  //Mettre les prix du panier dans la variable "priceTotlaCalcul"
-  priceTotlaCalcul.push(priceProduitsDansLePanier);  
+if (produitEnregistreDansLocalStorage == null){
+//pour supprimer l'erreur .length lorsque le panier est vide
+}else{
+  for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
+    let priceProduitsDansLePanier = produitEnregistreDansLocalStorage[m].price;
+  
+    //Mettre les prix du panier dans la variable "priceTotlaCalcul"
+    priceTotlaCalcul.push(priceProduitsDansLePanier);  
+  }
 }
+
 
 //Additionner les prix qu'il y a dans le tableau de la variable "priceTotalCalcul" avec la méthode .reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;

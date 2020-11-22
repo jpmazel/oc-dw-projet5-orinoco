@@ -34,7 +34,7 @@ dataApi.then(async (responseData) => {
                 <li><span class="gras">Description :</span> <span>${
                   response.description
                 }</span></li>                
-                <li><span class="gras">price : </span> <span>${response.price / 100} €</span></li>
+                <li><span class="gras">prix : </span> <span>${response.price / 100} €</span></li>
               </ul>
 
               <div class="option_produit_mise_en_page">

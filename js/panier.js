@@ -14,7 +14,6 @@ function panierVide() {
     return false;    
   }
 }
-
 //FIN Fonction--------------------------------------------------------------
 
 
@@ -51,7 +50,7 @@ if (
       structureProduitPanier +
       `
     <div class="container-recapitulatif">
-      <div><span class="gras">Quantité :</span> ${produitEnregistreDansLocalStorage[k].quantite} - ${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</div>
+      <div><span class="gras">Quantité :</span> ${produitEnregistreDansLocalStorage[k].quantite} <span class="gras"> - Produit : </span> ${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</div>
       <div>
         <div class="prix-produit"><span class="gras">${produitEnregistreDansLocalStorage[k].price}€</span></div> 
         <div><button class="btn-supprimer"> supprimer </button></div>
@@ -97,8 +96,6 @@ for (let l = 0; l < btn_supprimer.length; l++) {
   });
 };
 //FIN-GESTION DU BOUTTON SUPPRIMER L'ARTICLE----------------------------------------------------
-
-
 
 
 if(panierVide() == false){

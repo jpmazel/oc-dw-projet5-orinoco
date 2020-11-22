@@ -271,6 +271,7 @@ footer .copyright {
   align-self: center;
 }
 #container-produits-panier .container-recapitulatif div:nth-child(2) {
+  flex-basis: auto;
   display: flex;
   width: auto;
   padding-left: 1rem;

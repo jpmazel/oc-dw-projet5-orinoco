@@ -304,9 +304,11 @@ footer {
 
       &:nth-child(1) {
         // background: green;
+        
       }
 
       &:nth-child(2) {
+        flex-basis: auto;
         // background: red;
         display: flex;
 

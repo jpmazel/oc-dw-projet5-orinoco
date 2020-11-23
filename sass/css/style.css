@@ -291,12 +291,16 @@ footer .copyright {
   cursor: pointer;
 }
 
+.container-btn-tous-supprimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-tous-supprimer-panier {
   display: flex;
   justify-content: center;
-  height: 0 rem;
   margin-bottom: 2rem;
-  padding: 0;
 }
 .btn-tous-supprimer-panier button {
   margin: 0;

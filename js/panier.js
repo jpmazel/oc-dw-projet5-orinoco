@@ -102,9 +102,11 @@ if(panierVide() == false){
 //LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER---------------------------------------------
 //Le code HTML du boutton à afficher dans la page
 const btn_tous_supprimer_panier_html = `
-<div class="btn-tous-supprimer-panier">
-<button class="btn">Vider le panier</button>
-</div>
+<div class="container-btn-tous-supprimer">
+  <div class="btn-tous-supprimer-panier">
+  <button class="btn">Vider le panier</button>
+  </div>
+<div>
 `;
 
 //Insertion du bouton dans le HTML du panier s'il n'est pas vide

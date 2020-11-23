@@ -4,7 +4,7 @@
 
 :root {
   font-size: 62.5%;
-}
+};
 
 * {
   margin: 0;
@@ -19,32 +19,32 @@
 
     &:link {
       color: black;
-    }
+    };
 
     &:active {
       color: black;
-    }
+    };
     &:visited {
       color: black;
-    }
+    };
     &:focus {
       color: black;
-    }
+    };
     &:hover {
       color: rgb(182, 10, 10);
-    }
-  }
+    };
+  };
 
   h1 {
     font-size: 5rem;
-  }
+  };
   h2 {
     font-size: 3rem;
-  }
+  };
   div {
     font-size: 2rem;
-  }
-}
+  };
+};
 
 .btn,
 #btn-envoyer {
@@ -62,7 +62,7 @@
     circle,
     rgba(240, 230, 239, 1) 20%,
     rgba(207, 196, 224, 1) 77%
-  );
+  );  
   background-size: 300%;
   background-position: left;
   transition: background-image 1s;
@@ -71,9 +71,7 @@
 
   &:hover {
     cursor: pointer;
-    // background: linear-gradient(90deg, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
     background-position: right 200px;
-
     color: black;
 
     transform: scale(1.01);
@@ -81,17 +79,18 @@
 
     transition-property: transform, opacity;
     transition-duration: 1s, 1s;
-  }
-}
+  };
+};
 
 .gras {
   font-weight: bold;
-}
+};
 
 html,
 body {
   font-family: "Open Sans", sans-serif;
-}
+};
+
 
 //-------------------------début Mise en place de la grille index.html------------------
 .container {
@@ -100,17 +99,15 @@ body {
   display: flex;
   justify-content: center;
   @include tailleIntermediaire-container;
-  @include smartphone-container;
-  // border: 1px red solid;
-}
+  @include smartphone-container;  
+};
 
 .mise-en-page-produit {
   display: flex;
   border: solid 0.5px black;
   margin-bottom: 1rem; //espacement entre produit
   border-radius: $borderRadius;
-  background-color: $couleurOrinoco;
-  // height: 20rem;
+  background-color: $couleurOrinoco;  
   @include smartphone-mise-en-page-produit;
 
   .produit_photo {
@@ -124,20 +121,19 @@ body {
       width: 30rem;
       height: 20rem;
       object-fit: cover;
-      // object-position: bottom right;
-
+      
       border-radius: $borderRadius;
       box-shadow: 0px 1px 12px 2px rgba(0, 0, 0, 0.63);
-    }
-  }
+    };
+  };
 
   .produit {
     order: 1;
     margin-left: 2rem;
     margin-top: 1rem;
     @include smartphone-produit;
-  }
-}
+  };
+};
 
 .grid {
   display: grid;
@@ -148,7 +144,7 @@ body {
     "header header"
     "produit_photo produit"
     "footer footer";
-}
+};
 
 header {
   grid-area: header;
@@ -171,14 +167,15 @@ header {
       align-items: center;
       align-content: center;
       @include smartphone-header;
-    }
+    };
 
     img {
       order: 0;
       max-width: 20rem;
       border-radius: $borderRadius;
       margin-left: 1rem;
-    }
+    };
+
     ul {
       order: 1;
       display: flex;
@@ -187,26 +184,25 @@ header {
       li {
         margin-right: 3rem;
         margin-left: 3rem;
-      }
-    }
-  }
-}
+      };
+    };
+  };
+};
 
 .produit {
   grid-area: produit;
-}
+};
 
 .produit_photo {
   grid-area: produit_photo;
-}
+};
 
 footer {
   display: flex;
   flex-direction: column;
   border-radius: $borderRadius;
   border: 1px black solid;
-  height: auto;
-  // margin: auto;
+  height: auto;  
 
   justify-content: center;
   align-items: center;
@@ -216,24 +212,22 @@ footer {
     display: flex;
     li {
       padding: 1rem;
-    }
-  }
+    };
+  };
 
   .copyright {
     padding-bottom: 1rem;
-  }
+  };
 
   background-color: $couleurOrinoco;
   grid-area: footer;
   text-align: center;
-}
-
+};
 //------------------------------Fin de la mise en place de la grille index.html
 
-//******************************PRODUIT HTML-----------------------------------
 
-.option_produit_mise_en_page {
-  // border: 1px black solid;
+//******************************PRODUIT HTML-----------------------------------
+.option_produit_mise_en_page {  
   height: 150px;
 
   .page-produit-form {
@@ -243,25 +237,25 @@ footer {
     background: $couleurOrinoco;
     padding-top: 1rem;
 
-    .label-option_produit {
-      // background: red;
+    .label-option_produit {     
       label {
         margin-right: 3.3rem;
-      }
-    }
+      };
+    };
 
     .label-quantite_produit {
       // background: orange;
-    }
+    };
 
     select {
       font-size: 2rem;
       padding-left: 1rem;
-    }
-  }
-}
+    };
+  };
+};
 
 //------------------------------PRODUIT HTML FIN-------------------------------
+
 
 //******************************PANIER HTML-------------------------------------
 .grid-panier {
@@ -273,7 +267,7 @@ footer {
     "header"
     "container-produits-panier"
     "footer";
-}
+};
 
 #container-produits-panier {
   grid-area: "container-produits-panier";
@@ -281,8 +275,7 @@ footer {
   flex-direction: column;
   min-width: 80vw;
 
-  justify-content: center;
-  // border: 1px solid black;
+  justify-content: center;  
   border-radius: $borderRadius;
 
   .container-recapitulatif {
@@ -296,16 +289,13 @@ footer {
 
     border-radius: $borderRadius;
     div {
-
-      .prix-produit{
-        // background: violet; 
-        align-self: center;    
-      }
+      .prix-produit {        
+      align-self: center;
+      };
 
       &:nth-child(1) {
         // background: green;
-        
-      }
+      };
 
       &:nth-child(2) {
         flex-basis: auto;
@@ -315,15 +305,14 @@ footer {
         span {
           align-self: center;
           margin-right: 0.3rem;
-        }
+        };
 
-        
         width: auto;
-        padding-left: 1rem;        
-      }
-    }
-  }
-}
+        padding-left: 1rem;
+      };
+    };
+  };
+};
 
 .btn-supprimer {
   padding: 0.8rem;
@@ -332,21 +321,25 @@ footer {
   &:hover {
     background-color: rgba(255, 0, 0, 0.459);
     cursor: pointer;
-  }
-}
+  };
+};
+
+.container-btn-tous-supprimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
 
 .btn-tous-supprimer-panier {
   display: flex;
   justify-content: center;
-  // border: 1px solid black;
-  height: 0 rem;
   margin-bottom: 2rem;
-  padding: 0;
+
   button {
     margin: 0;
     font-size: 2rem;
-  }
-}
+  };
+};
 
 .container-montant-total {
   background-color: rgb(212, 129, 20);
@@ -357,7 +350,7 @@ footer {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 3rem;
-}
+};
 
 .affichage-prix-html {
   border: 1px black solid;
@@ -367,12 +360,11 @@ footer {
 
   padding: 1rem;
   margin-bottom: 2rem;
-}
-
+};
 //-----------------------------PANIER HTML FIN---------------------------------
 
-//*******************************FORMULAIRE ENVOIE COMMANDE*********************
 
+//*****************************FORMULAIRE ENVOIE COMMANDE*********************
 #formulaireCommande {
   border: 1px black solid;
   background-color: $couleurOrinoco;
@@ -382,43 +374,41 @@ footer {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-}
+};
 
 h2 {
   text-align: center;
   padding-left: 1rem;
   padding-right: 1rem;
-}
+};
 
 #formulaireCommande {
-  form {
-    // border: 1px black solid;
-    // width:80%;
+  form {    
     display: flex;
-    flex-direction: column;
-    // justify-content: center;
+    flex-direction: column;    
     align-items: center;
 
     label {
       padding: 1rem;
-    }
+    };
+
     input {
       width: 80%;
       padding: 1rem;
       font-size: 2rem;
-    }
+    };
 
     textarea {
       width: 80%;
       font-size: 2rem;
-      font-family:"Open Sans";
-    }
+      font-family: "Open Sans";
+    };
 
     .infoChampManquant {
       color: red;
       font-weight: 900;
       padding-bottom: 1rem;
-    }
+    };
 
     #envoyerFormulaire {
       padding: 1rem;
@@ -439,8 +429,7 @@ h2 {
       transition: background-image 1s;
 
       &:hover {
-        cursor: pointer;
-        // background: linear-gradient(90deg, rgba(240,230,239,1) 20%, rgba(207,196,224,1) 77%);
+        cursor: pointer;        
         background-position: right 200px;
 
         color: black;
@@ -450,13 +439,13 @@ h2 {
 
         transition-property: transform, opacity;
         transition-duration: 1s, 1s;
-      }
-    }
-  }
-}
+      };
+    };
+  };
+};
+
 
 //************************confirmation-commande---------------
-
 .grid {
   display: grid;
   grid-template-columns: auto;
@@ -466,13 +455,12 @@ h2 {
     "header "
     "produit_photo "
     "footer ";
-}
+};
 
 #container-recapitulatif-commande {
   width: 80vw;
   padding-top: 1rem;
   padding-bottom: 1rem;
-
 
   border: solid 0.5px black;
   align-self: center;
@@ -485,18 +473,17 @@ h2 {
   background-color: $couleurOrinoco;
 
   @include tailleIntermediaire-container;
-}
+};
 
-.recapCommande {
-  //  align-self: stretch;
+.recapCommande {  
 
   p:nth-child(1) {
     color: red;
     font-weight: 900;
     font-size: 2rem;
-  }
+  };
 
   p {
     text-align: center;
-  }
-}
+  };
+};

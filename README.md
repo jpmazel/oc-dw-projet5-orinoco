@@ -37,6 +37,10 @@ Dans Visual Studio Code :
 * ouvrir le terminal
 * `npm install`
 
+## 3 Liens GitPages
+Après avoir installer le backend en local, on peut ouvrir le site directement depuis le navigateur en cliquant sur ce lien :   
+[https://jpmazel.github.io/oc-dw-projet5-orinoco/index.html](https://jpmazel.github.io/oc-dw-projet5-orinoco/index.html)
+
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
   

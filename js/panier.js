@@ -260,7 +260,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   };
 
   const regExPrenomNomVille = (value) => {
-    return /^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$/.test(value);
+    return /^([A-Za-z\s]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$/.test(value);
   };
 
   const regExCodePostal = (value) => {

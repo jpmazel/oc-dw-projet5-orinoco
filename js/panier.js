@@ -186,7 +186,7 @@ const afficherFormulaireHtml = () => {
             <label for="prenom">Prénom :</label><span id="prenomManquant" class="infoChampManquant"></span>
             <input type="text" id="prenom" name="prenom" required />
 
-            <label for="nom"> Nom : </label><span id="nomManquant" class="infoChampManquant"></span>
+            <label for="nom"> Nom : </label><span id="nomsManquant" class="infoChampManquant"></span>
             <input type="text" id="nom" name="nom" required />
 
             <label for="adresse"> Adresse : </label><span id="adresseManquant" class="infoChampManquant"></span>
@@ -289,26 +289,20 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   function prenomControle() {
     //Contrôle de la validité du prenom
     const lePrenom = formulaireValues.prenom;
-    if (regExPrenomNomVille(lePrenom)) {
-      dataChampManquantTextVide("prenomManquant");
+    if (regExPrenomNomVille(lePrenom)) {      
       return true;
-    } else {
-      dataChampManquantText("prenomManquant");
-      alert(textAlert("Prénom"));
+    } else {      
       return false;
     };
   };
 
-  //Fonction nomControle()
+  //Fonction nomControle() controle du regex
   function nomControle() {
     //Contrôle de la validité du nom
     const leNom = formulaireValues.nom;
-    if (regExPrenomNomVille(leNom)) {
-      dataChampManquantTextVide("nomManquant");
+    if (regExPrenomNomVille(leNom)) {      
       return true;
-    } else {
-      dataChampManquantText("nomManquant");
-      alert(textAlert("Nom"));
+    } else {      
       return false;
     };
   };
@@ -317,12 +311,9 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   function villeControle() {
     //Contrôle de la validité de la ville
     const laville = formulaireValues.ville;
-    if (regExPrenomNomVille(laville)) {
-      dataChampManquantTextVide("villeManquant");
+    if (regExPrenomNomVille(laville)) {      
       return true;
-    } else {
-      dataChampManquantText("villeManquant");
-      alert(textAlert("ville"));
+    } else {     
       return false;
     };
   };
@@ -331,12 +322,9 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   function codePostalControle() {
     //Contrôle de la validité du code postal
     const lecodePostal = formulaireValues.codePostal;
-    if (regExCodePostal(lecodePostal)) {
-      dataChampManquantTextVide("codePostalManquant");
+    if (regExCodePostal(lecodePostal)) {      
       return true;
-    } else {
-      dataChampManquantText("codePostalManquant");
-      alert("Code Postal : doit être composé de 5 chiffres");
+    } else {      
       return false;
     };
   };
@@ -345,12 +333,9 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   function emailControle() {
     //Contrôle de la validité de l'email
     const leEmail = formulaireValues.email;
-    if (regExEmail(leEmail)) {
-      dataChampManquantTextVide("emailManquant");
+    if (regExEmail(leEmail)) {     
       return true;
-    } else {
-      dataChampManquantText("emailManquant");
-      alert("L'email n'est pas valide");
+    } else {      
       return false;
     };
   };
@@ -358,18 +343,22 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Fonction adresseControle()
   function adresseControle() {
     const leAdresse = formulaireValues.adresse;
-    if (regExAdresse(leAdresse)) {
-      dataChampManquantTextVide("adresseManquant");
+    if (regExAdresse(leAdresse)) {      
       return true;
-    } else {
-      dataChampManquantText("adresseManquant");
-      alert(
-        "L'adresse doit contenir que des lettres sans ponctuation et des chiffres"
-      );
+    } else {      
       return false;
     };
   };
+  
+  // opérateur ternaire pour afficher "Veuillez bien remplir ce champ" dans le formualaire si l'input est mal rempli
 
+   prenomControle() == true ? dataChampManquantTextVide("prenomManquant") : dataChampManquantText("prenomManquant");
+   nomControle() == true ? dataChampManquantTextVide("nomsManquant") : dataChampManquantText("nomsManquant");
+   adresseControle() == true ? dataChampManquantTextVide("adresseManquant") : dataChampManquantText("adresseManquant");
+   villeControle() == true ? dataChampManquantTextVide("villeManquant") : dataChampManquantText("villeManquant");
+   codePostalControle() == true ? dataChampManquantTextVide("codePostalManquant") : dataChampManquantText("codePostalManquant");
+   emailControle() == true ? dataChampManquantTextVide("emailManquant") : dataChampManquantText("emailManquant");       
+  
   //Contrôle de la validité du formulaire avant envoie dans le local storage
   if (
     prenomControle() &&
@@ -392,7 +381,9 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
     envoieVersServeur(aEnvoyer);
   } else {
-    alert("Veuillez bien remplir le formulaire");
+    console.log("formulaire pas bon")
+    
+    // alert("Veuillez bien remplir le formulaire");
   };
 
   //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------

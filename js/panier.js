@@ -367,17 +367,35 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     emailControle() &&
     adresseControle() &&
     villeControle()
-  ) {
-    //Mettre l'objet "formulaireValues" dans le local storage
-    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
-    localStorage.setItem("priceTotal", JSON.stringify(priceTotal));
+    ) {
+      //Mettre l'objet "formulaireValues" dans le local storage
+      localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+      localStorage.setItem("priceTotal", JSON.stringify(priceTotal));
 
-    //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
+      //ADAPTATION à la requête : products y mettre l'id ou les id des produits dedans pour le backend
+      let products = [];
+      for (o = 0; o < produitEnregistreDansLocalStorage.length; o++){
+        let productsId = produitEnregistreDansLocalStorage[o].id_ProduitSelectionner;
+        products.push(productsId);
+      };
+      
+      console.log("products");      
+      console.log(products);
+      
+      const contact = 
+        {
+          firstName : "test",
+          lastName : "test",
+          address : "test",
+          city : "test",
+          email : "test@test.com",
+        }
+      ;    
+
     const aEnvoyer = {
-      produitEnregistreDansLocalStorage,
-      formulaireValues,
-      priceTotal,
-    };
+      contact,
+      products,
+    }
 
     envoieVersServeur(aEnvoyer);
   } else {
@@ -393,7 +411,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 //FONCTION envoieVersServeur()------------------------------------------------------
 function envoieVersServeur(aEnvoyer) {
   //Envoie de l'objet "aEnvoyer" vers le serveur
-  const promise01 = fetch("https://restapi.fr/api/commandeTest1", {
+  const promise01 = fetch("http://localhost:3000/api/cameras/order", {
     method: "POST",
     body: JSON.stringify(aEnvoyer),
     headers: {
@@ -414,10 +432,10 @@ function envoieVersServeur(aEnvoyer) {
 
         //Récupération de l'id de la response du serveur
         console.log("id de response");
-        console.log(contenu._id);
+        console.log(contenu.orderId);
 
         //Mettre l'id dans le local storage
-        localStorage.setItem("responseId", contenu._id);
+        localStorage.setItem("responseId", contenu.orderId);
 
         //Aller vers la page confirmation-commande
         window.location = "confirmation-commande.html";

@@ -184,16 +184,16 @@ const afficherFormulaireHtml = () => {
 
           <form>
             <label for="prenom">Prénom :</label><span id="prenomManquant" class="infoChampManquant"></span>
-            <input type="text" id="prenom" name="prenom" required />
+            <input type="text" id="firstName" name="prenom" required />
 
             <label for="nom"> Nom : </label><span id="nomsManquant" class="infoChampManquant"></span>
-            <input type="text" id="nom" name="nom" required />
+            <input type="text" id="lastName" name="nom" required />
 
             <label for="adresse"> Adresse : </label><span id="adresseManquant" class="infoChampManquant"></span>
-            <textarea id="adresse" name="adresse" required> </textarea>
+            <textarea id="address" name="adresse" required> </textarea>
 
             <label for="ville"> Ville : </label><span id="villeManquant" class="infoChampManquant"></span>
-            <input type="text" id="ville" name="ville" required />
+            <input type="text" id="city" name="ville" required />
 
             <label for="codePostal"> Code Postal : </label><span id="codePostalManquant" class="infoChampManquant"></span>
             <input type="text" id="codePostal" name="codePostal" required />
@@ -239,10 +239,10 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Création / définition d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
   class Formulaire {
     constructor(input) {
-      this.prenom = document.querySelector("#prenom").value;
-      this.nom = document.querySelector("#nom").value;
-      this.adresse = document.querySelector("#adresse").value;
-      this.ville = document.querySelector("#ville").value;
+      this.firstName = document.querySelector("#firstName").value;
+      this.lastName = document.querySelector("#lastName").value;
+      this.address = document.querySelector("#address").value;
+      this.city = document.querySelector("#city").value;
       this.codePostal = document.querySelector("#codePostal").value;
       this.email = document.querySelector("#email").value;
     }
@@ -288,7 +288,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Fonction prenomControle()
   function prenomControle() {
     //Contrôle de la validité du prenom
-    const lePrenom = formulaireValues.prenom;
+    const lePrenom = formulaireValues.firstName;
     if (regExPrenomNomVille(lePrenom)) {      
       return true;
     } else {      
@@ -299,7 +299,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Fonction nomControle() controle du regex
   function nomControle() {
     //Contrôle de la validité du nom
-    const leNom = formulaireValues.nom;
+    const leNom = formulaireValues.lastName;
     if (regExPrenomNomVille(leNom)) {      
       return true;
     } else {      
@@ -310,7 +310,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   //Fonction villeControle()
   function villeControle() {
     //Contrôle de la validité de la ville
-    const laville = formulaireValues.ville;
+    const laville = formulaireValues.city;
     if (regExPrenomNomVille(laville)) {      
       return true;
     } else {     
@@ -342,7 +342,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
   //Fonction adresseControle()
   function adresseControle() {
-    const leAdresse = formulaireValues.adresse;
+    const leAdresse = formulaireValues.address;
     if (regExAdresse(leAdresse)) {      
       return true;
     } else {      
@@ -382,14 +382,14 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       console.log("products");      
       console.log(products);
       
-      const contact = 
-        {
-          firstName : "test",
-          lastName : "test",
-          address : "test",
-          city : "test",
-          email : "test@test.com",
-        }
+      const contact = formulaireValues;
+        // {
+        //   firstName : "test",
+        //   lastName : "test",
+        //   address : "test",
+        //   city : "test",
+        //   email : "test@test.com",
+        // }
       ;    
 
     const aEnvoyer = {
@@ -455,9 +455,13 @@ function envoieVersServeur(aEnvoyer) {
 //METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE-----------------------------
 //Prendre la key dans le localStorage et la mettre dans une variable
 const dataLocalStorage = localStorage.getItem("formulaireValues");
+console.log("dataLocalStorage");
+console.log(dataLocalStorage);
 
 //Convertir la chaîne de caractère en objet javascript
 const dataLocalStorageObjet = JSON.parse(dataLocalStorage);
+console.log("dataLocalStorageObjet");
+console.log(dataLocalStorageObjet);
 
 //Fonction pour que le champ du formulaire soit rempli par les données du  local storage si elle existe
 function remplirChampInputDepuisLocalStorage(input) {
@@ -470,10 +474,10 @@ function remplirChampInputDepuisLocalStorage(input) {
 
 //Appel des fonctions pour remplir automatiquement les champs du formulaire suivant les données du localStorage
 
-remplirChampInputDepuisLocalStorage("prenom");
-remplirChampInputDepuisLocalStorage("nom");
-remplirChampInputDepuisLocalStorage("adresse");
-remplirChampInputDepuisLocalStorage("ville");
+remplirChampInputDepuisLocalStorage("firstName");
+remplirChampInputDepuisLocalStorage("lastName");
+remplirChampInputDepuisLocalStorage("address");
+remplirChampInputDepuisLocalStorage("city");
 remplirChampInputDepuisLocalStorage("codePostal");
 remplirChampInputDepuisLocalStorage("email");
 

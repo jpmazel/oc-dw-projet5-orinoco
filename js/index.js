@@ -63,10 +63,7 @@ dataApi.then(async (responseData) => {
       }
     }
 
-    affichageProduits(response);
-    window.onload = () => {
-      affichageProduits(response);
-    };
+    affichageProduits(response);    
     
   } catch (e) {
     console.log(e);

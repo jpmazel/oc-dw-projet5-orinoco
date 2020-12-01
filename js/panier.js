@@ -260,7 +260,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
   };
 
   const regExPrenomNomVille = (value) => {
-    return /^([A-Za-z\s]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$/.test(value);
+    return /^([A-Za-z\s]{3,20})?([-]{0,1})?([A-Za-z\s]{3,20})$/.test(value);
   };
 
   const regExCodePostal = (value) => {
@@ -350,7 +350,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     };
   };
   
-  // opérateur ternaire pour afficher "Veuillez bien remplir ce champ" dans le formualaire si l'input est mal rempli
+  // opérateur ternaire pour afficher "Veuillez bien remplir ce champ" dans le formulaire si l'input est mal rempli
 
    prenomControle() == true ? dataChampManquantTextVide("prenomManquant") : dataChampManquantText("prenomManquant");
    nomControle() == true ? dataChampManquantTextVide("nomsManquant") : dataChampManquantText("nomsManquant");
@@ -383,25 +383,25 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
       console.log(products);
       
       const contact = formulaireValues;
-        // {
-        //   firstName : "test",
-        //   lastName : "test",
-        //   address : "test",
-        //   city : "test",
-        //   email : "test@test.com",
-        // }
-      ;    
+
+        /*format de la requête contact attendu par le backend
+        {
+          firstName : "test",
+          lastName : "test",
+          address : "test",
+          city : "test",
+          email : "test@test.com",
+        }*/
+         
 
     const aEnvoyer = {
       contact,
       products,
-    }
+    };
 
     envoieVersServeur(aEnvoyer);
   } else {
-    console.log("formulaire pas bon")
-    
-    // alert("Veuillez bien remplir le formulaire");
+    console.log("formulaire pas bon");  
   };
 
   //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------
@@ -480,7 +480,4 @@ remplirChampInputDepuisLocalStorage("address");
 remplirChampInputDepuisLocalStorage("city");
 remplirChampInputDepuisLocalStorage("codePostal");
 remplirChampInputDepuisLocalStorage("email");
-
-console.log("dataLocalStorageObjet");
-console.log(dataLocalStorageObjet);
 };

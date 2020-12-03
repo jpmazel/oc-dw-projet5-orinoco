@@ -30,11 +30,15 @@ dataApi.then(async (responseData) => {
             <div class="produit">
 
               <ul>
-                <li><span class="gras">Nom produit : </span> <span>${response.name}</span></li>
+                <li><span class="gras">Nom produit : </span> <span>${
+                  response.name
+                }</span></li>
                 <li><span class="gras">Description :</span> <span>${
                   response.description
                 }</span></li>                
-                <li><span class="gras">prix : </span> <span>${response.price / 100} €</span></li>
+                <li><span class="gras">prix : </span> <span>${
+                  response.price / 100
+                } €</span></li>
               </ul>
 
               <div class="option_produit_mise_en_page">
@@ -94,7 +98,6 @@ dataApi.then(async (responseData) => {
     //Injection du code html
     positionElementQuantite.innerHTML = structureQuantité;
 
-
     // LA GESTION DU PANIER
     // La récupération des données séléctionné par l'utilisateur et envoie du panier
 
@@ -126,7 +129,6 @@ dataApi.then(async (responseData) => {
       };
 
       console.log(optionsProduit);
-
 
       //LE LOCAL STORAGE
       //Stocker la récupération des valeurs du formulaire (choix client) dans le local storage
@@ -174,8 +176,6 @@ dataApi.then(async (responseData) => {
         popupConfirmation();
       }
     }); //FIN du addEventListener
-
-    
   } catch (e) {
     console.log(e);
   }

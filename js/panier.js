@@ -8,14 +8,12 @@ function panierVide() {
     //ne pas afficher le formulaire
     console.log(`Le panier est vide : true`);
     return true;
-    
   } else {
     console.log("Le panier est vide : false");
-    return false;    
+    return false;
   }
 }
 //FIN Fonction--------------------------------------------------------------
-
 
 //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
 let produitEnregistreDansLocalStorage = JSON.parse(
@@ -24,7 +22,6 @@ let produitEnregistreDansLocalStorage = JSON.parse(
 //JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 console.log("produitEnregistreDansLocalStorage");
 console.log(produitEnregistreDansLocalStorage);
-
 
 //L'AFFICHAGE DES PRODUITS DU PANIER------------------------------------------------------------
 //Sélection de la classe où je vais injecter le code HTML
@@ -65,7 +62,6 @@ if (
 }
 //FIN de l'affichage des produits du panier------------------------------------------------------------------
 
-
 //GESTION DU BOUTTON SUPPRIMER L'ARTICLE---------------------------------------------------------------------
 //Sélection des références de tous les boutons btn-supprimer
 let btn_supprimer = document.querySelectorAll(".btn-supprimer");
@@ -94,14 +90,13 @@ for (let l = 0; l < btn_supprimer.length; l++) {
     alert("Ce produit a été supprimer du panier");
     window.location.href = "panier.html";
   });
-};
+}
 //FIN-GESTION DU BOUTTON SUPPRIMER L'ARTICLE----------------------------------------------------
 
-
-if(panierVide() == false){
-//LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER---------------------------------------------
-//Le code HTML du boutton à afficher dans la page
-const btn_tous_supprimer_panier_html = `
+if (panierVide() == false) {
+  //LE BOUTON PANIER POUR VIDER ENTIEREMENT LE PANIER---------------------------------------------
+  //Le code HTML du boutton à afficher dans la page
+  const btn_tous_supprimer_panier_html = `
 <div class="container-btn-tous-supprimer">
   <div class="btn-tous-supprimer-panier">
   <button class="btn">Vider le panier</button>
@@ -109,75 +104,75 @@ const btn_tous_supprimer_panier_html = `
 <div>
 `;
 
-//Insertion du bouton dans le HTML du panier s'il n'est pas vide
-if (panierVide() == false) {
-  positionElement3.insertAdjacentHTML(
-    "beforeend",
-    btn_tous_supprimer_panier_html
-  );
-}
-
-//La sélection de la référence du bouton "btn-tous-supprimer-panier"
-const btn_tous_supprimer_panier = document.querySelector(
-  ".btn-tous-supprimer-panier"
-);
-
-//Suppression de la key "produit" du local Storage pour vider entierement le panier
-//Le addEventListener
-btn_tous_supprimer_panier.addEventListener("click", (e) => {
-  
-  //.removeItem pour vider le local storage
-  localStorage.removeItem("produit");
-
-  //Pop up alert "Le panier a été vidé"
-  alert("Le panier a été vidé");
-
-  //Rechargement de la page panier.html
-  window.location.href = "panier.html";
-});
-
-//FIN - Le bouton pour vider entièrement le panier-------------------------------------------
-
-
-//LE MONTANT TOTAL DU PANIER-----------------------------------------------------------------
-//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
-let priceTotlaCalcul = [];
-
-//Aller chercher les prix dans le panier
-if (produitEnregistreDansLocalStorage == null) {
-  //pour supprimer l'erreur .length lorsque le panier est vide
-} else {
-  for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
-    let priceProduitsDansLePanier = produitEnregistreDansLocalStorage[m].price;
-
-    //Mettre les prix du panier dans la variable "priceTotlaCalcul"
-    priceTotlaCalcul.push(priceProduitsDansLePanier);
+  //Insertion du bouton dans le HTML du panier s'il n'est pas vide
+  if (panierVide() == false) {
+    positionElement3.insertAdjacentHTML(
+      "beforeend",
+      btn_tous_supprimer_panier_html
+    );
   }
-}
 
-//Additionner les prix qu'il y a dans le tableau de la variable "priceTotalCalcul" avec la méthode .reduce
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-const priceTotal = priceTotlaCalcul.reduce(reducer, 0);
+  //La sélection de la référence du bouton "btn-tous-supprimer-panier"
+  const btn_tous_supprimer_panier = document.querySelector(
+    ".btn-tous-supprimer-panier"
+  );
 
-//Le code HTML du price total à afficher
-const affichagepriceHtml = `
+  //Suppression de la key "produit" du local Storage pour vider entierement le panier
+  //Le addEventListener
+  btn_tous_supprimer_panier.addEventListener("click", (e) => {
+    //.removeItem pour vider le local storage
+    localStorage.removeItem("produit");
+
+    //Pop up alert "Le panier a été vidé"
+    alert("Le panier a été vidé");
+
+    //Rechargement de la page panier.html
+    window.location.href = "panier.html";
+  });
+
+  //FIN - Le bouton pour vider entièrement le panier-------------------------------------------
+
+  //LE MONTANT TOTAL DU PANIER-----------------------------------------------------------------
+  //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+  let priceTotlaCalcul = [];
+
+  //Aller chercher les prix dans le panier
+  if (produitEnregistreDansLocalStorage == null) {
+    //pour supprimer l'erreur .length lorsque le panier est vide
+  } else {
+    for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
+      let priceProduitsDansLePanier =
+        produitEnregistreDansLocalStorage[m].price;
+
+      //Mettre les prix du panier dans la variable "priceTotlaCalcul"
+      priceTotlaCalcul.push(priceProduitsDansLePanier);
+    }
+  }
+
+  //Additionner les prix qu'il y a dans le tableau de la variable "priceTotalCalcul" avec la méthode .reduce
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const priceTotal = priceTotlaCalcul.reduce(reducer, 0);
+
+  //Le code HTML du price total à afficher
+  const affichagepriceHtml = `
 <div class="affichage-prix-html">Le prix total est de : <span class="gras"> ${priceTotal} € </span></div>
 `;
 
-//Injection du code html dans la page panier après le dernier enfant
-positionElement3.insertAdjacentHTML("beforeend", affichagepriceHtml);
+  //Injection du code html dans la page panier après le dernier enfant
+  positionElement3.insertAdjacentHTML("beforeend", affichagepriceHtml);
 
-//FIN - Le montant total du panier------------------------------------------------------------
+  //FIN - Le montant total du panier------------------------------------------------------------
 
+  //LE FORMULAIRE DE COMMANDE-------------------------------------------------------------------
+  //La fonction afficherFormulaireHtml(){}
+  const afficherFormulaireHtml = () => {
+    //Sélection élément du DOM pour le positionnement du formulaire
+    const positionElement4 = document.querySelector(
+      "#container-produits-panier"
+    );
 
-//LE FORMULAIRE DE COMMANDE-------------------------------------------------------------------
-//La fonction afficherFormulaireHtml(){}
-const afficherFormulaireHtml = () => {
-  //Sélection élément du DOM pour le positionnement du formulaire
-  const positionElement4 = document.querySelector("#container-produits-panier");
-
-  //La strucuture du code HTML du formulaire de commande
-  const structureFormulaire = `
+    //La strucuture du code HTML du formulaire de commande
+    const structureFormulaire = `
   
         <div id="formulaireCommande">
           <h2>Remplissez le formulaire pour valider la commande</h2>
@@ -212,179 +207,193 @@ const afficherFormulaireHtml = () => {
         </div>
   `;
 
-  //Injection du code dans la page HTML
-  positionElement4.insertAdjacentHTML("beforeend", structureFormulaire);
-};
+    //Injection du code dans la page HTML
+    positionElement4.insertAdjacentHTML("beforeend", structureFormulaire);
+  };
 
-//Affichage du formulaire si le panier contient au moins un article
-if (
-  produitEnregistreDansLocalStorage === null ||
-  produitEnregistreDansLocalStorage == 0
-) {
-  //ne pas afficher le formulaire
-} else {
-  afficherFormulaireHtml();
-}
-
-//Sélection du bouton envoyer le formulaire
-const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
-//FIN Formulaire de commande--------------------------------------------------------------------------------
-
-
-//GESTION VALIDATION DU FORMULAIRE--------------------------------------------------------------------------
-//ADDEVENTLISTENER : ecoute du click du bouton envoyer le formulaire (Confirmation de la commande)
-btnEnvoyerFormulaire.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  //Création / définition d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
-  class Formulaire {
-    constructor(input) {
-      this.firstName = document.querySelector("#firstName").value;
-      this.lastName = document.querySelector("#lastName").value;
-      this.address = document.querySelector("#address").value;
-      this.city = document.querySelector("#city").value;
-      this.codePostal = document.querySelector("#codePostal").value;
-      this.email = document.querySelector("#email").value;
-    }
+  //Affichage du formulaire si le panier contient au moins un article
+  if (
+    produitEnregistreDansLocalStorage === null ||
+    produitEnregistreDansLocalStorage == 0
+  ) {
+    //ne pas afficher le formulaire
+  } else {
+    afficherFormulaireHtml();
   }
 
-  //Appel de l'instance de classe Formulaire pour créer l'objet formulaireValues
-  const formulaireValues = new Formulaire();
+  //Sélection du bouton envoyer le formulaire
+  const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
+  //FIN Formulaire de commande--------------------------------------------------------------------------------
 
-  console.log("formulaireValues");
-  console.log(formulaireValues);
+  //GESTION VALIDATION DU FORMULAIRE--------------------------------------------------------------------------
+  //ADDEVENTLISTENER : ecoute du click du bouton envoyer le formulaire (Confirmation de la commande)
+  btnEnvoyerFormulaire.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  //GESTION VALIDATION DU FORMULAIRE : les REGEX
-  const textAlert = (value) => {
-    return `${value}: Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caractères`;
-  };
+    //Création / définition d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
+    class Formulaire {
+      constructor(input) {
+        this.firstName = document.querySelector("#firstName").value;
+        this.lastName = document.querySelector("#lastName").value;
+        this.address = document.querySelector("#address").value;
+        this.city = document.querySelector("#city").value;
+        this.codePostal = document.querySelector("#codePostal").value;
+        this.email = document.querySelector("#email").value;
+      }
+    }
 
-  const regExPrenomNomVille = (value) => {
-    return /^([A-Za-z\s]{3,20})?([-]{0,1})?([A-Za-z\s]{3,20})$/.test(value);
-  };
+    //Appel de l'instance de classe Formulaire pour créer l'objet formulaireValues
+    const formulaireValues = new Formulaire();
 
-  const regExCodePostal = (value) => {
-    return /^[0-9]{5}$/.test(value);
-  };
+    console.log("formulaireValues");
+    console.log(formulaireValues);
 
-  const regExEmail = (value) => {
-    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-  };
-
-  const regExAdresse = (value) => {
-    return /^[A-Za-z0-9\s]{5,50}$/.test(value);
-  };
-
-  //Fonction pour gérer l'affichage du texte à coté de l'input pour indiquer qu'il faut le remplir correctement
-  function dataChampManquantTextVide(querySelectorId) {
-    document.querySelector(`#${querySelectorId}`).textContent = "";
-  };
-
-  function dataChampManquantText(querySelectorId) {
-    document.querySelector(`#${querySelectorId}`).textContent =
-      "Veuillez bien remplir ce champ";
-  };
-  
-  //Fonction prenomControle()
-  function prenomControle() {
-    //Contrôle de la validité du prenom
-    const lePrenom = formulaireValues.firstName;
-    if (regExPrenomNomVille(lePrenom)) {      
-      return true;
-    } else {      
-      return false;
+    //GESTION VALIDATION DU FORMULAIRE : les REGEX
+    const textAlert = (value) => {
+      return `${value}: Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caractères`;
     };
-  };
 
-  //Fonction nomControle() controle du regex
-  function nomControle() {
-    //Contrôle de la validité du nom
-    const leNom = formulaireValues.lastName;
-    if (regExPrenomNomVille(leNom)) {      
-      return true;
-    } else {      
-      return false;
+    const regExPrenomNomVille = (value) => {
+      return /^([A-Za-z\s]{3,20})?([-]{0,1})?([A-Za-z\s]{3,20})$/.test(value);
     };
-  };
 
-  //Fonction villeControle()
-  function villeControle() {
-    //Contrôle de la validité de la ville
-    const laville = formulaireValues.city;
-    if (regExPrenomNomVille(laville)) {      
-      return true;
-    } else {     
-      return false;
+    const regExCodePostal = (value) => {
+      return /^[0-9]{5}$/.test(value);
     };
-  };
 
-  //Fonction codePostalControle()
-  function codePostalControle() {
-    //Contrôle de la validité du code postal
-    const lecodePostal = formulaireValues.codePostal;
-    if (regExCodePostal(lecodePostal)) {      
-      return true;
-    } else {      
-      return false;
+    const regExEmail = (value) => {
+      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
     };
-  };
 
-  //Fonction emailControle()
-  function emailControle() {
-    //Contrôle de la validité de l'email
-    const leEmail = formulaireValues.email;
-    if (regExEmail(leEmail)) {     
-      return true;
-    } else {      
-      return false;
+    const regExAdresse = (value) => {
+      return /^[A-Za-z0-9\s]{5,50}$/.test(value);
     };
-  };
 
-  //Fonction adresseControle()
-  function adresseControle() {
-    const leAdresse = formulaireValues.address;
-    if (regExAdresse(leAdresse)) {      
-      return true;
-    } else {      
-      return false;
-    };
-  };
-  
-  // opérateur ternaire pour afficher "Veuillez bien remplir ce champ" dans le formulaire si l'input est mal rempli
+    //Fonction pour gérer l'affichage du texte à coté de l'input pour indiquer qu'il faut le remplir correctement
+    function dataChampManquantTextVide(querySelectorId) {
+      document.querySelector(`#${querySelectorId}`).textContent = "";
+    }
 
-   prenomControle() == true ? dataChampManquantTextVide("prenomManquant") : dataChampManquantText("prenomManquant");
-   nomControle() == true ? dataChampManquantTextVide("nomsManquant") : dataChampManquantText("nomsManquant");
-   adresseControle() == true ? dataChampManquantTextVide("adresseManquant") : dataChampManquantText("adresseManquant");
-   villeControle() == true ? dataChampManquantTextVide("villeManquant") : dataChampManquantText("villeManquant");
-   codePostalControle() == true ? dataChampManquantTextVide("codePostalManquant") : dataChampManquantText("codePostalManquant");
-   emailControle() == true ? dataChampManquantTextVide("emailManquant") : dataChampManquantText("emailManquant");       
-  
-  //Contrôle de la validité du formulaire avant envoie dans le local storage
-  if (
-    prenomControle() &&
-    nomControle() &&
-    codePostalControle() &&
-    emailControle() &&
-    adresseControle() &&
-    villeControle()
+    function dataChampManquantText(querySelectorId) {
+      document.querySelector(`#${querySelectorId}`).textContent =
+        "Veuillez bien remplir ce champ";
+    }
+
+    //Fonction prenomControle()
+    function prenomControle() {
+      //Contrôle de la validité du prenom
+      const lePrenom = formulaireValues.firstName;
+      if (regExPrenomNomVille(lePrenom)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //Fonction nomControle() controle du regex
+    function nomControle() {
+      //Contrôle de la validité du nom
+      const leNom = formulaireValues.lastName;
+      if (regExPrenomNomVille(leNom)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //Fonction villeControle()
+    function villeControle() {
+      //Contrôle de la validité de la ville
+      const laville = formulaireValues.city;
+      if (regExPrenomNomVille(laville)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //Fonction codePostalControle()
+    function codePostalControle() {
+      //Contrôle de la validité du code postal
+      const lecodePostal = formulaireValues.codePostal;
+      if (regExCodePostal(lecodePostal)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //Fonction emailControle()
+    function emailControle() {
+      //Contrôle de la validité de l'email
+      const leEmail = formulaireValues.email;
+      if (regExEmail(leEmail)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //Fonction adresseControle()
+    function adresseControle() {
+      const leAdresse = formulaireValues.address;
+      if (regExAdresse(leAdresse)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // opérateur ternaire pour afficher "Veuillez bien remplir ce champ" dans le formulaire si l'input est mal rempli
+    prenomControle() == true
+      ? dataChampManquantTextVide("prenomManquant")
+      : dataChampManquantText("prenomManquant");
+    nomControle() == true
+      ? dataChampManquantTextVide("nomsManquant")
+      : dataChampManquantText("nomsManquant");
+    adresseControle() == true
+      ? dataChampManquantTextVide("adresseManquant")
+      : dataChampManquantText("adresseManquant");
+    villeControle() == true
+      ? dataChampManquantTextVide("villeManquant")
+      : dataChampManquantText("villeManquant");
+    codePostalControle() == true
+      ? dataChampManquantTextVide("codePostalManquant")
+      : dataChampManquantText("codePostalManquant");
+    emailControle() == true
+      ? dataChampManquantTextVide("emailManquant")
+      : dataChampManquantText("emailManquant");
+
+    //Contrôle de la validité du formulaire avant envoie dans le local storage
+    if (
+      prenomControle() &&
+      nomControle() &&
+      codePostalControle() &&
+      emailControle() &&
+      adresseControle() &&
+      villeControle()
     ) {
       //Mettre l'objet "formulaireValues" dans le local storage
-      localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+      localStorage.setItem(
+        "formulaireValues",
+        JSON.stringify(formulaireValues)
+      );
       localStorage.setItem("priceTotal", JSON.stringify(priceTotal));
 
       //ADAPTATION à la requête : products y mettre l'id ou les id des produits dedans pour le backend
       let products = [];
-      for (o = 0; o < produitEnregistreDansLocalStorage.length; o++){
-        let productsId = produitEnregistreDansLocalStorage[o].id_ProduitSelectionner;
+      for (o = 0; o < produitEnregistreDansLocalStorage.length; o++) {
+        let productsId =
+          produitEnregistreDansLocalStorage[o].id_ProduitSelectionner;
         products.push(productsId);
-      };
-      
-      console.log("products");      
+      }
+
+      console.log("products");
       console.log(products);
-      
+
       const contact = formulaireValues;
 
-        /*format de la requête contact attendu par le backend
+      /*format de la requête contact attendu par le backend
         {
           firstName : "test",
           lastName : "test",
@@ -392,92 +401,88 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
           city : "test",
           email : "test@test.com",
         }*/
-         
 
-    const aEnvoyer = {
-      contact,
-      products,
-    };
+      const aEnvoyer = {
+        contact,
+        products,
+      };
 
-    envoieVersServeur(aEnvoyer);
-  } else {
-    console.log("formulaire pas bon");  
-  };
-
-  //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------
-}); //Fin addEventListener
-
-
-//FONCTION envoieVersServeur()------------------------------------------------------
-function envoieVersServeur(aEnvoyer) {
-  //Envoie de l'objet "aEnvoyer" vers le serveur
-  const promise01 = fetch("http://localhost:3000/api/cameras/order", {
-    method: "POST",
-    body: JSON.stringify(aEnvoyer),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  //Pour voir le résultat du serveur dans la console
-  promise01.then(async (response) => {
-    //Si la promesse n'est pas résolu, si elle est rejeté - gestions des erreurs
-    try {
-      const contenu = await response.json();
-      console.log("contenu de response");
-      console.log(contenu);
-
-      if (response.ok) {
-        console.log(`Resultat de response.ok : ${response.ok}`);
-
-        //Récupération de l'id de la response du serveur
-        console.log("id de response");
-        console.log(contenu.orderId);
-
-        //Mettre l'id dans le local storage
-        localStorage.setItem("responseId", contenu.orderId);
-
-        //Aller vers la page confirmation-commande
-        window.location = "confirmation-commande.html";
-      } else {
-        console.log(`Réponse du serveur : ${response.status}`);
-        alert(`Problème avec le serveur : erreur ${response.status}`);
-      }
-    } catch (e) {
-      console.log("ERREUR qui vient du catch()");
-      console.log(e);
-      alert(`ERREUR qui vient du catch() ${e}`);
+      envoieVersServeur(aEnvoyer);
+    } else {
+      console.log("formulaire pas bon");
     }
-  });
-}//FIN FONCTION envoieVersServeur()-----------------------------------------------------------
 
+    //FIN - GESTION VALIDATION DU FORMULAIRE-------------------------------------------
+  }); //Fin addEventListener
 
-//METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE-----------------------------
-//Prendre la key dans le localStorage et la mettre dans une variable
-const dataLocalStorage = localStorage.getItem("formulaireValues");
-console.log("dataLocalStorage");
-console.log(dataLocalStorage);
+  //FONCTION envoieVersServeur()------------------------------------------------------
+  function envoieVersServeur(aEnvoyer) {
+    //Envoie de l'objet "aEnvoyer" vers le serveur
+    const promise01 = fetch("http://localhost:3000/api/cameras/order", {
+      method: "POST",
+      body: JSON.stringify(aEnvoyer),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-//Convertir la chaîne de caractère en objet javascript
-const dataLocalStorageObjet = JSON.parse(dataLocalStorage);
-console.log("dataLocalStorageObjet");
-console.log(dataLocalStorageObjet);
+    //Pour voir le résultat du serveur dans la console
+    promise01.then(async (response) => {
+      //Si la promesse n'est pas résolu, si elle est rejeté - gestions des erreurs
+      try {
+        const contenu = await response.json();
+        console.log("contenu de response");
+        console.log(contenu);
 
-//Fonction pour que le champ du formulaire soit rempli par les données du  local storage si elle existe
-function remplirChampInputDepuisLocalStorage(input) {
-  if (dataLocalStorageObjet == null) {
-    console.log("le local storage à pour valeur null");
-  } else {
-    document.querySelector(`#${input}`).value = dataLocalStorageObjet[input];
+        if (response.ok) {
+          console.log(`Resultat de response.ok : ${response.ok}`);
+
+          //Récupération de l'id de la response du serveur
+          console.log("id de response");
+          console.log(contenu.orderId);
+
+          //Mettre l'id dans le local storage
+          localStorage.setItem("responseId", contenu.orderId);
+
+          //Aller vers la page confirmation-commande
+          window.location = "confirmation-commande.html";
+        } else {
+          console.log(`Réponse du serveur : ${response.status}`);
+          alert(`Problème avec le serveur : erreur ${response.status}`);
+        }
+      } catch (e) {
+        console.log("ERREUR qui vient du catch()");
+        console.log(e);
+        alert(`ERREUR qui vient du catch() ${e}`);
+      }
+    });
+  } //FIN FONCTION envoieVersServeur()-----------------------------------------------------------
+
+  //METTRE LE CONTENU DU LOCALSTORAGE DANS LES CHAMPS DU FORMULAIRE-----------------------------
+  //Prendre la key dans le localStorage et la mettre dans une variable
+  const dataLocalStorage = localStorage.getItem("formulaireValues");
+  console.log("dataLocalStorage");
+  console.log(dataLocalStorage);
+
+  //Convertir la chaîne de caractère en objet javascript
+  const dataLocalStorageObjet = JSON.parse(dataLocalStorage);
+  console.log("dataLocalStorageObjet");
+  console.log(dataLocalStorageObjet);
+
+  //Fonction pour que le champ du formulaire soit rempli par les données du  local storage si elle existe
+  function remplirChampInputDepuisLocalStorage(input) {
+    if (dataLocalStorageObjet == null) {
+      console.log("le local storage à pour valeur null");
+    } else {
+      document.querySelector(`#${input}`).value = dataLocalStorageObjet[input];
+    }
   }
+
+  //Appel des fonctions pour remplir automatiquement les champs du formulaire suivant les données du localStorage
+  remplirChampInputDepuisLocalStorage("firstName");
+  remplirChampInputDepuisLocalStorage("lastName");
+  remplirChampInputDepuisLocalStorage("address");
+  remplirChampInputDepuisLocalStorage("city");
+  remplirChampInputDepuisLocalStorage("codePostal");
+  remplirChampInputDepuisLocalStorage("email");
 }
-
-//Appel des fonctions pour remplir automatiquement les champs du formulaire suivant les données du localStorage
-
-remplirChampInputDepuisLocalStorage("firstName");
-remplirChampInputDepuisLocalStorage("lastName");
-remplirChampInputDepuisLocalStorage("address");
-remplirChampInputDepuisLocalStorage("city");
-remplirChampInputDepuisLocalStorage("codePostal");
-remplirChampInputDepuisLocalStorage("email");
-};

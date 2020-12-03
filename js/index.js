@@ -44,11 +44,15 @@ dataApi.then(async (responseData) => {
             </div>
             <div class="produit">
               <ul>
-                <li><span class="gras">Nom produit : </span> <span>${name[i]}</span></li>
+                <li><span class="gras">Nom produit : </span> <span>${
+                  name[i]
+                }</span></li>
                 <li><span class="gras">Description :</span> <span>${
                   description[i]
                 }</span></li>              
-                <li><span class="gras">price : </span><span>${price[i] / 100} €</span></li>
+                <li><span class="gras">price : </span><span>${
+                  price[i] / 100
+                } €</span></li>
               </ul>
               <a href="./produit.html?id=${_id[i]}">
               <button class="btn">Voir l'article</button>
@@ -63,8 +67,7 @@ dataApi.then(async (responseData) => {
       }
     }
 
-    affichageProduits(response);    
-    
+    affichageProduits(response);
   } catch (e) {
     console.log(e);
   }
